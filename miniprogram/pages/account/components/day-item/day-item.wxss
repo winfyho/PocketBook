@@ -1,0 +1,53 @@
+/* pages/account/acc-components/day-item/day-item.wxss */
+
+.day {
+  width: 100%;
+}
+
+.day-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  height: 100rpx;
+  background: #f1f1f1;
+  /* margin-bottom: 15rpx; */
+  display: flex;
+  /* box-shadow: 0rpx 15rpx 19rpx #999 */
+}
+
+.day-list>view {
+  height: 100%;
+  line-height: 100rpx;
+}
+
+.day-list>view .span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-right: 12rpx;
+}
+
+.day-list view.date {
+  flex: 0 0 160rpx;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  color: rgb(241, 113, 0);
+  font-size: 38rpx;
+}
+
+.day-list view.income {
+  flex: 0 0 275rpx;
+  text-align: left;
+  color: rgb(0, 178, 106);
+  font-size: 36rpx;
+}
+
+.day-list view.outcome {
+  padding-left: 20rpx;
+  flex: 0 0 275rpx;
+  text-align: left;
+  color: rgb(223, 18, 18);
+  font-size: 36rpx;
+}

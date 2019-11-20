@@ -1,0 +1,63 @@
+.detail-view {
+  width: 100%;
+  box-sizing: border-box;
+  /* padding: 0 30rpx; */
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+}
+
+
+
+.detail-view>view {
+  box-sizing: border-box;
+  height: 100%;
+  line-height: 100rpx;
+}
+
+.detail-view .category {
+  
+  flex: 0 0 250rpx;
+  padding-left: 60rpx;
+  color: #000;
+  font-weight: 500;
+  display: flex;
+}
+.detail-view .category image{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 30rpx 0rpx;
+  display: block;
+  line-height: 100rpx;
+  margin-right: 20rpx;
+  /* background: #f00; */
+}
+
+.detail-view .date {
+  flex: 0 0 250rpx;
+  height: 100rpx;
+  line-height: 105rpx;
+  font-size: 24rpx;
+  color: #777;
+}
+.detail-view .date text{
+  margin-left: 18rpx;
+}
+
+.detail-view .number {
+  flex: 0 0 250rpx;
+  text-align: center;
+  padding-left: 0rpx;
+  line-height: 105rpx;
+
+}
+
+.detail-view .income {
+  color: rgb(0, 178, 106);
+}
+
+.detail-view .outcome {
+  color: rgb(223, 18, 18);
+}
+
+

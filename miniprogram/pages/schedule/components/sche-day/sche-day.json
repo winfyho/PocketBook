@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "sche-item":"../sche-item/sche-item"
+  }
+}

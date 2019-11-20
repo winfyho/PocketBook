@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pager":"/components/pager/pager",
+    "detail-item": "../detail-item/detail-item",
+    "detail-view": "../detailView/detail-view",
+    "day-view": "../dayView/dayView",
+    "process": "/components/process/process"
+  }
+}

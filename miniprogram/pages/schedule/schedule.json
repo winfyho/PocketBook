@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "sche-editor":"./components/sche-editor/sche-editor",
+    "sche-item":"./components/sche-item/sche-item",
+    "sche-day":"./components/sche-day/sche-day"
+  },
+  "navigationBarBackgroundColor": "#8B686F",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的时间",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

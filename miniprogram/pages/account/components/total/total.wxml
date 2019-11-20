@@ -1,0 +1,12 @@
+<view class="total">
+    <view class="income">
+      <text>收入：</text>
+      <text class="number">{{income}}</text>
+    </view>
+    <view class="outcome">
+      <text>支出：</text>
+      <text class="number">{{outcome}}</text>
+    </view>
+
+    <view class="startDate">统计自{{month}}月{{1}}号开始</view>
+  </view>

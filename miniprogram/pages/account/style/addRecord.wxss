@@ -1,0 +1,118 @@
+
+.add-record-wraper{
+  position: fixed;
+  bottom: 0rpx;
+  background: rgba(0, 0, 0, 0.5);
+
+  width: 100%;
+  height: 100%;
+}
+.add-record{
+  position: absolute;
+  bottom: 0rpx;
+  background: #fff;
+  width: 100%;
+  height: 1105rpx;
+  /* padding-bottom: 600rpx; */
+
+}
+
+
+.add-record .header{
+  position: relative;
+  width: 100%;
+  background: #86BAA3;
+  height: 80rpx;
+  color: #fff;
+  display: flex;
+  
+  opacity: 1;
+
+
+}
+.add-record .header .close{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 80rpx;
+  width: 120rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-weight: 500;
+  font-size: 32rpx;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.add-record .header text{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+
+
+
+
+/* 分类选择器 */
+.add-record .category{
+  width: 100%;
+  height: 310rpx;
+  background: #fff;
+  /* margin-bottom: 600rpx; */
+}
+.add-record .category>view{
+  height: 110rpx;
+  box-sizing: border-box;
+  /* border-bottom: 1px solid #666; */
+  display: flex;
+  /* justify-content: space-around; */
+  padding: 20rpx 20rpx;
+  justify-content: space-between;
+}
+.add-record .category>view.income-cat{
+  height: 90rpx;
+  padding: 20rpx 20rpx 0rpx 20rpx;
+}
+.add-record .category>view.outcome-cat{
+  height: 220rpx;
+  flex-wrap: wrap;
+}
+.add-record .category>view>text{
+  display: block;
+  flex: 0 0 100rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  margin: 8rpx;
+  border-radius: 35rpx;
+  font-size: 26rpx;
+  /* margin: 0 10rpx; */
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+.add-record .category>view.income-cat>text{
+  border: 1px solid rgb(0,178,106);
+
+}
+.add-record .category>view.income-cat>text.active{
+ background: rgb(0,178,106);
+ color: #fff
+
+}
+.add-record .category>view.outcome-cat>text{
+  border: 1px solid rgb(223, 18, 18);
+
+}
+.add-record .category>view.outcome-cat>text.active{
+ background: rgb(223, 18, 18);
+ color: #fff
+
+}
+
+
+
+
+
+

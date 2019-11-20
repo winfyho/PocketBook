@@ -1,0 +1,158 @@
+
+/* 背景景深 */
+.detail-item-wraper {
+  position: relative;
+  width: 750rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  overflow: hidden;
+  perspective: 1000rpx;
+}
+
+
+/* 外层3d盒子 */
+.detail-item-wraper .box {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  transform-style: preserve-3d;
+  transition: all .5s;
+  transform: rotateX(0deg);
+
+}
+.detail-item-wraper .box>view{
+  position: absolute
+}
+
+.detail-item-wraper .active {
+  transform: rotateX(90deg);
+}
+
+/* 正面显示区域------------------------------- */
+.detail-item-wraper .detail-item {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  background: rgb(255 , 255, 255);
+  display: flex;
+}
+
+.detail-item-wraper .detail-item {
+  transform: rotateX(0deg) translateZ(50rpx);
+  transition: left 0.2s ease-out;
+}
+
+
+/* 底部显示区域---------------------------- */
+.detail-item-wraper .bottom {
+  height: 100rpx;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #aaa;
+  background-color: rgb(255 , 255, 255);
+  transform: rotateX(-90deg) translateZ(50rpx);
+  overflow: hidden;
+  display: flex;
+}
+.detail-item-wraper .bottom .showDetail{
+  height: 100%;
+  line-height: 100rpx;
+  flex: 1 1 auto;
+  padding: 0 60rpx;
+  overflow: hidden;
+  font-size: 26rpx;
+  color: #444;
+}
+.detail-item-wraper .bottom .delete{
+  height: 100%;
+  line-height: 100rpx;
+  flex: 0 0 130rpx;
+  text-align: center;
+  background: #f00;
+  color: #fff;
+}
+
+
+
+
+
+
+/* 内容样式 */
+.detail-item>view {
+  box-sizing: border-box;
+  height: 100%;
+  line-height: 100rpx;
+  text-align: left;
+}
+
+.detail-item .category {
+  height: 100rpx;
+  line-height: 100rpx;
+  flex: 0 0 300rpx;
+  padding-left: 150rpx;
+  color: #000;
+  display: flex;
+  font-weight: 500;
+}
+
+.detail-item .category image {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 30rpx 0rpx;
+  display: block;
+  line-height: 100rpx;
+  margin-right: 20rpx;
+  /* background: #f00; */
+}
+
+.detail-item .date {
+  flex: 0 0 250rpx;
+  /* border: 1px solid #000; */
+  height: 100rpx;
+  line-height: 105rpx;
+  padding-left: 70rpx;
+  font-size: 24rpx;
+  color: #777;
+}
+
+.detail-item .number {
+  /* border: 1px solid #000; */
+  flex: 0 0 195rpx;
+  line-height: 105rpx;
+}
+
+.detail-item .income {
+  color: rgb(0, 178, 106);
+}
+
+.detail-item .outcome {
+  color: rgb(223, 18, 18);
+}
+
+.detail-item .right-bar {
+  width: 190rpx;
+  flex: 0 0 190rpx;
+  /* background: #eee; */
+  height: 100rpx;
+  display: flex;
+}
+
+.detail-item .right-bar>view {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.detail-item .right-bar>view.showDetail {
+  color: #fff;
+  background: #bbb;
+  /* border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx; *//* box-shadow: 2rpx 0 rpx 15rpx rgba(0, 0, 0, 0.5); */
+}
+
+.detail-item .right-bar>view.delete {
+  color: #fff;
+  background: rgb(243, 19, 19);
+}

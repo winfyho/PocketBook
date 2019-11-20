@@ -1,0 +1,4 @@
+<!--pages/setting/setting.wxml-->
+<text>pages/setting/setting.wxml</text>
+<navigator open-type="navigateBack">返回</navigator>
+<button bindtap="routeBack">返回</button>

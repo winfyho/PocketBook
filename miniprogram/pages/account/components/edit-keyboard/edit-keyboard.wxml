@@ -1,0 +1,71 @@
+
+<view class="edit-keyboard-wraper" wx:if="{{addActive}}">
+  <view class="add-record" >
+
+    <!--------- 标题栏----------------- -->
+    <view class="header">
+      <view class="close" bindtap="closeAddRecord">关闭</view>
+      <text>记一笔</text>
+    </view>
+
+    <!-------- 日期，金额显示 -------------->
+    <view class="input-block">
+
+      <view class="date">
+        <picker mode="date" value="{{addDate}}" bindchange="bindDateChange">
+          <text class="month">{{month}}月</text>{{day}}号</picker>
+      </view>
+
+      <view class="number">
+        <input value="{{addNumStr}}" maxlength="9"></input>
+      </view>
+
+      <view  bindtap="addComment" class="comment {{addCommentActive === true ? 'addCommentActive' : ''}}">
+        <input placeholder="添加备注" bindinput="changeComment" value="{{comment}}"></input>
+        <button class="completeCom" size="mini" wx:if="{{addCommentActive}}" catchtap="completeComment">完成</button>
+      </view>
+
+    </view>
+
+
+    <!---------- 分类选择器 ------------->
+    <view class="category">
+      <view class="income-cat">
+
+        <text wx:for="{{categorys.income}}" wx:key="{{index}}" 
+          class="{{(index === addCatIndex && type==='income')  ? 'active' : ''}}" 
+          data-name="{{item.name}}" data-index="{{index}}" data-type="{{'income'}}" data-imgUrl="{{item.imgurl}}"
+          bindtap="chooseCate">{{item.name}}</text>
+
+      </view>
+
+      <view class="outcome-cat">
+
+        <text wx:for="{{categorys.outcome}}" wx:key="{{index}}" 
+          class="{{(index === addCatIndex && type==='outcome')  ? 'active' : ''}}" 
+          data-name="{{item.name}}" data-index="{{index}}" data-type="{{'outcome'}}" data-imgurl="{{item.imgurl}}"
+          bindtap="chooseCate">{{item.name}}</text>
+
+      </view>
+    </view>
+
+    <!-------------- 键盘 -------------- -->
+    <view class="keyboard">
+      <view class="keyboard-num">
+        <button class="num" wx:for="{{9}}" wx:key="{{index}}" data-num="{{item+1}}" bindtap="inputNum" hover-class="num-click">{{item+1}}</button>
+
+        <button class="num zero" data-num="{{0}}" bindtap="inputNum" hover-class="num-click">0</button>
+        <button class="num" data-num="{{'00'}}" bindtap="inputNum" hover-class="num-click">00</button>
+
+
+      </view>
+
+      <view class="keyboard-ctrl">
+        <button class="delete" bindtap="backspace">删除</button>
+        <button class="clearInput" bindtap="clearInput">清空</button>
+        <button class="complete" bindtap="complete" hover-class="btn-click">完成</button>
+
+      </view>
+    </view>
+  </view>
+</view>

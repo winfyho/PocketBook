@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/schedule/schedule",
+    "pages/account/account",
+    "pages/home/home",
+    "pages/acc_overview/test",
+    "pages/schedule/pages/detail"
+  ],
+  "sitemapLocation": "sitemap57.json",
+  "window": {
+    "navigationBarBackgroundColor": "#8B686F",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小程序1.0",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/schedule/schedule",
+        "text": "",
+        "iconPath": "/assets/icon/schedule.png",
+        "selectedIconPath": "/assets/icon/schedule_active.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "",
+        "iconPath": "/assets/icon/account.png",
+        "selectedIconPath": "/assets/icon/account_active.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+<view class="sche-item" bindtap="showScheduleDetail"  >
+
+  <view class="allday" wx:if="{{detail.isAllday}}">
+    <text>全天</text>
+  </view>
+
+  <view class="time" wx:else>
+    <text>{{detail.startTime}}</text>
+    <text>{{detail.endTime}}</text>
+  </view>
+
+
+
+  <view class="name">
+    <image src="/assets/icon/schedule_name.png"></image>
+    <text>{{detail.scheName}}</text>
+  </view>
+
+  <view class="place">
+    <image src="/assets/icon/place.png"></image>
+    <text>{{detail.place}}</text>
+  </view>
+
+</view>

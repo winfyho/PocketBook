@@ -1,0 +1,30 @@
+/* pages/schedule/schedule.wxss */
+@import './style/edit.wxss';
+@import './style/footer.wxss';
+page{
+  background: #f5f5f5;
+
+}
+.editor-com{
+  width: 750rpx;
+  /* background: #f5f5f5; */
+}
+.day{
+  width: 100%;
+  height: 100%;
+}
+
+.add-btn{
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+}
+.add-btn>button{
+  width: 115rpx;
+  height: 115rpx;
+  text-align: center;
+  line-height: 115rpx;
+  border-radius: 50%;
+  background: #CD7572;
+  color: #fff;
+}

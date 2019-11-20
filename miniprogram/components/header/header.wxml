@@ -1,0 +1,2 @@
+<!--components/header/header.wxml-->
+<view class="header" bindtap="click">header组件</view>

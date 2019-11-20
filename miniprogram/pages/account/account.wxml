@@ -1,0 +1,24 @@
+<view class="body">
+  <!--------------- 信息总览------ -->
+  <total income="{{income}}" outcome="{{outcome}}" month="{{dayList[0].month}}" />
+
+  <day-item wx:for="{{dayList}}" wx:key="{{index}}" bind:emit="deleteItem" day="{{item.day}}" income="{{item.income}}" outcome="{{item.outcome}}" detailList="{{item.detailList}}" />
+
+
+
+
+
+  <!--------------- 底部按钮------- -->
+  <view class="footer">
+    <button hover-class="hover-active" bindtap="openKeyBoard" class="add-record">记一笔</button>
+    <button class="else" bindtap="routePush">总览</button>
+  </view>
+
+
+
+
+</view>
+
+<edit-keyboard wx:if="{{addActive}}" addActive="{{addActive}}" bind:close="closeKeyBoard" />
+
+

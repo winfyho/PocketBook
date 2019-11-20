@@ -1,0 +1,5 @@
+<view class="pager">
+  <view class="item {{currentPager===index?'active':''}}" wx:for="{{pagers}}" wx:key="{{index}}"
+    data-index="{{index}}" bindtap="changePager">{{item.name}}</view>
+  
+</view>

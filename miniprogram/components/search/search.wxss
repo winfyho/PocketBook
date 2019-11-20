@@ -1,0 +1,36 @@
+/* components/search/search.wxss */
+.search{
+  display: flex;
+  background: #f4f4f4;
+  height: 80rpx;
+}
+.search view{
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+}
+.search .search-hd{
+  
+  flex: 1 1 auto;
+  padding: 0 20rpx;
+}
+.search .search-bd{
+  flex: 2 2 auto;
+  padding: 10rpx 0;
+}
+.search .search-bd input{
+  border: 1px solid #666;
+  height: 60rpx;
+  font-size: 28rpx;
+  color: #999;
+  border-radius: 10rpx;
+  background: #fff;
+}
+
+
+
+.search .search-btn{
+  flex: 1 1 auto;
+  padding: 0 20rpx;
+
+}

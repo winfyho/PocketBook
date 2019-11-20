@@ -1,0 +1,10 @@
+/* pages/account/account.wxss */
+@import "./style/footer.wxss";
+@import "./style/addRecord.wxss";
+.body{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 80rpx;
+  background: #fff;
+}

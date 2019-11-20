@@ -1,0 +1,36 @@
+/* pages/schedule/components/sche-day/sche-day.wxss */
+.sche-day{
+  width: 100%;
+  display: flex;
+  padding-right: 15rpx;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+  background: #f5f5f5;
+}
+.sche-day .date{
+  flex: 0 0 160rpx;
+  width: 160rpx;
+  height: 160rpx;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  padding-top: 30rpx;
+
+}
+.sche-day .date .month{
+  font-size: 20rpx;
+  color: #888;
+  margin-right: 8rpx;
+}
+.sche-day .date .day{
+  font-size: 46rpx;
+  color: #8B686F;
+  font-weight: 500;
+}
+
+
+.sche-day .day-item{
+  flex: 0 0 570rpx;
+  width: 570rpx;
+  box-sizing: border-box;
+
+}

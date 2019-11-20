@@ -1,0 +1,59 @@
+.sche-item{
+  width: 570rpx;
+  /* 550rpx */
+  display: flex;
+  /* border: 1px solid #000; */
+  box-sizing: border-box;
+  height: 180rpx;
+  margin-bottom: 12rpx;
+  border-radius: 18rpx;
+  background: #fff;
+}
+.sche-item>view{
+  text-align: center;
+  box-sizing: border-box;
+}
+.sche-item .time{
+  padding-left: 30rpx;
+  padding-top: 35rpx;
+  flex: 0 0 135rpx;
+  text-align: left;
+}
+.sche-item .allday{
+  padding-left: 20rpx;
+  flex: 0 0 130rpx;
+  line-height: 115rpx;
+  text-align: left;
+  color: #00B26A;
+}
+.sche-item .time>text{
+  display: block;
+  height: 50rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+.sche-item .name,
+.sche-item .place{
+  padding: 40rpx 0 0 0;
+  display: flex;
+  flex: 0 0 220rpx;
+  line-height: 150rpx;
+}
+.sche-item .name image,
+.sche-item .place image{
+  display: block;
+  flex: 0 0 auto;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.sche-item .name text,
+.sche-item .place text{
+  flex: 0 0 150rpx;
+  text-align: left;
+  overflow: hidden;
+  line-height: 40rpx;
+  display: block;
+  height: 80rpx;
+}
+

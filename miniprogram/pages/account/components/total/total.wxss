@@ -1,0 +1,36 @@
+.total{
+  position: relative;
+  width: 700rpx;
+  height: 200rpx;
+  background: #fff;
+  /* background: #86BAA3; */
+  
+  box-sizing: border-box;
+  margin: 25rpx;
+  padding: 20rpx 20rpx;
+  /* color: #fff; */
+  color: #86BAA3;
+  border: 1px solid #86BAA3;
+  border-radius: 15rpx;
+  font-size: 32rpx;
+  display: flex;
+}
+.total .income,
+.total .outcome{
+  width: 50%;
+  height: 100%;
+  display: flex
+}
+.total view .number{
+  display: block;
+  font-size: 49rpx;
+  text-align: center;
+  padding-top: 40rpx;
+}
+
+.total view.startDate{
+  position: absolute;
+  right: 15rpx;
+  bottom: 15rpx;
+  font-size: 24rpx;
+}

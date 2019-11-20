@@ -1,0 +1,6 @@
+.box{
+  width: 740rpx;
+  height: 100px;
+  background: #f00;
+  font-size: 30rpx;
+}

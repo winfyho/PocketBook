@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "header":"/components/header/header",
+    "pager":"/components/pager/pager",
+    "my-search":"/components/search/search",
+    "process":"/components/process/process"
+  },
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true
+}

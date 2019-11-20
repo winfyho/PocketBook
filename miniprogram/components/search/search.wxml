@@ -1,0 +1,14 @@
+<!--components/search/search.wxml-->
+<view class="search">
+  <view class="search-hd">信息</view>
+
+  <slot name="slot1" />
+  <slot name="slot2" />
+  <slot name="slot3" />
+
+  <view class="search-bd">
+    <input placeholder="输入要搜素的内容"></input>
+  </view>
+
+  <view class="search-btn">搜索</view>
+</view>

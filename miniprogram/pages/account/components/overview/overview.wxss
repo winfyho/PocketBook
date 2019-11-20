@@ -1,0 +1,13 @@
+/* pages/account/acc-components/overview/overview.wxss */
+.body .cat{
+  padding-top: 20rpx;
+}
+.body .cat progress{
+  margin-bottom: 10rpx;
+}
+.body .cat-header{
+  color: #777;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}
