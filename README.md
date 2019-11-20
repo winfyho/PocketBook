@@ -1,8 +1,7 @@
 # schedule 时间管理
+<img src="miniprogram/assets/readme/schedule.png">
 
-<img src="miniprogram/assets/readme/schedule.png" width="20%" >
-<img src="miniprogram/assets/readme/schedule_edit.png" width="20%" >
-<img src="miniprogram/assets/readme/schedule_detail.png" width="20%" >
+
 
 - 时间表总览
 - 添加记录
@@ -10,9 +9,7 @@
 
 # account 记账
 
-<img src="miniprogram/assets/readme/account.png" width="20%" >
-<img src="miniprogram/assets/readme/account_edit.png" width="20%" >
-<img src="miniprogram/assets/readme/account_overview.png" width="20%" >
+<img src="miniprogram/assets/readme/account.png"  >
 
 - 账本总览
 - 记一笔
