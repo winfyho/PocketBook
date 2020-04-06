@@ -1,14 +1,16 @@
 // pages/account/acc-components/detail-item/detail-item.js
+import {getDateObj} from "../../../../utils/date.js"
 const app = getApp();
 const db = wx.cloud.database();
-const account = db.collection("todos");
+const account = db.collection("account");
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
 
-    detailItem: {
+    detail: {
       type: Object,
       value: {}
     },
@@ -27,7 +29,16 @@ Component({
    * 组件的初始数据
    */
   data: {
-    iconUrl: ""
+    iconUrl: "",
+    timeString:"0:00",
+  },
+  attached: function () {
+    let dateObj = getDateObj(this.data.detail.editTime.time)
+    // console.table(time.timeString)
+
+    this.setData({
+      timeString:dateObj.timeString
+    })
   },
 
   /**
@@ -63,11 +74,5 @@ Component({
     
   },
 
-  lifetimes: {
-    created: function () {
-      
-
-    }
-  }
-
+  
 })

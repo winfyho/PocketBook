@@ -2,26 +2,20 @@
 Component({
 
   properties: {
-
+    pagers:{
+      type:Array,
+      value:[]
+    },
+    currentPager: {
+      type:Number,
+      value:0
+    }
   },
 
   data: {
 
-    pagers: [
-      {
-        name: "分类"
-      },
-      {
-        name: "全部"
-      },
-      {
-        name: "按天"
-      },
-      
-      
-    ],
+    
 
-    currentPager:0
 
 
 

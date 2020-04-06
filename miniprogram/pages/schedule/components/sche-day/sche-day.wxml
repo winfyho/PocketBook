@@ -1,12 +1,12 @@
 <view class="sche-day">
 
   <view class="date">
-    <text class="month">{{dateObj.month}}月</text>
+    <text class="month">{{month}}月</text>
 
-    <text class="day">{{dateObj.day}}</text>
+    <text class="day">{{day}}</text>
   </view>
   <view class="day-item">
-    <sche-item  wx:for="{{dayItem.detailList}}" wx:key="{{index}}" detail="{{item.detail}}" item_id="{{item._id}}" />
+    <sche-item  wx:for="{{records}}" wx:key="{{index}}" detail="{{item}}" item_id="{{item._id}}" />
 
   </view>
 

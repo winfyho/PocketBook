@@ -7,9 +7,9 @@
 .day-list {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 20rpx;
-  height: 100rpx;
-  background: #f1f1f1;
+  padding: 0 10rpx 0 40rpx;
+  height: 80rpx;
+  background: #fbfbfb;
   /* margin-bottom: 15rpx; */
   display: flex;
   /* box-shadow: 0rpx 15rpx 19rpx #999 */
@@ -17,37 +17,49 @@
 
 .day-list>view {
   height: 100%;
-  line-height: 100rpx;
+  line-height: 80rpx;
 }
 
-.day-list>view .span {
-  display: inline-block;
-  height: 100%;
-  vertical-align: center;
-  font-size: 24rpx;
-  color: #666;
-  margin-right: 12rpx;
-}
+
 
 .day-list view.date {
-  flex: 0 0 160rpx;
+  flex: 0 0 200rpx;
   box-sizing: border-box;
-  padding-left: 20rpx;
-  color: rgb(241, 113, 0);
-  font-size: 38rpx;
+  color: rgba(134, 186, 162, 0.63);
+  font-weight: 600;
+  font-size: 28rpx;
 }
 
-.day-list view.income {
-  flex: 0 0 275rpx;
+.day-list .number{
+  flex: 0 0 500rpx;
+  min-width: 400rpx;
+  display: flex;
+  
+}
+.day-list .number .subtotal{
+  width: 50%;
+  height: 100%;
+  line-height: 80rpx;
   text-align: left;
-  color: rgb(0, 178, 106);
-  font-size: 36rpx;
+  color: #888;
+  font-size: 30rpx;
+  overflow: hidden;
+  display: flex;
+}
+.day-list .number .subtotal .span{
+  display: block;
+  flex: 0 0 55rpx;
+  width: 55rpx;
+  min-width: 55rpx;
+
+  font-size: 22rpx;
+}
+.day-list .number .subtotal .num{
+  display: block;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+  flex: 1 1 auto;
+  width: 145rpx;
 }
 
-.day-list view.outcome {
-  padding-left: 20rpx;
-  flex: 0 0 275rpx;
-  text-align: left;
-  color: rgb(223, 18, 18);
-  font-size: 36rpx;
-}
+

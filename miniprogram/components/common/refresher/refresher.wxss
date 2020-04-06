@@ -1,0 +1,29 @@
+/* components/common/refresher/refresher.wxss */
+.refresher{
+  position: absolute;
+  top: -90rpx;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) rotate(0);
+  width: 90rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  padding: 25rpx;
+  font-size: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 10rpx 5rpx rgba(139,104,111, .5);
+  background: #fff;
+  transition: all .3s;
+  overflow: hidden;
+}
+.refresher-active{
+  top: 140rpx;
+  opacity: 1;
+  transform: translateX(-50%) rotate(950deg);
+
+}
+.refresher .inner{
+  display: block;
+  width: 100%;
+  height: 100%;
+}

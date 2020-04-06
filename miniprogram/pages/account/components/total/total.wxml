@@ -8,5 +8,5 @@
       <text class="number">{{outcome}}</text>
     </view>
 
-    <view class="startDate">统计自{{month}}月{{1}}号开始</view>
+    <view class="startDate">{{month}}月{{1}}号开始</view>
   </view>

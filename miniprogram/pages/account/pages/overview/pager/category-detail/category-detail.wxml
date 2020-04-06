@@ -1,0 +1,20 @@
+<!--pages/account/components/overview/components/category-detail/category-detail.wxml-->
+<view class="body">
+
+  <category-picker 
+  bind:change="getNewData"
+
+  
+  year="{{year}}" 
+  month="{{month}}" 
+  name="{{typeName}}" 
+  type="{{type}}" />
+
+  <detail-item wx:for="{{detailList}}" wx:key="{{index}}" detail="{{item}}" showDate="{{true}}" />
+
+  <view class="bottom">
+    <button size="mini" wx:if="{{curSkip !== -1}}" class="{{curSkip === -1 ? '' : 'active' }}" bindtap="changeSkip">{{btnTitle}}</button>
+    <text wx:else>已经到底了~</text>
+
+  </view>
+</view>

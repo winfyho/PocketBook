@@ -2,11 +2,13 @@
   "usingComponents": {
     "sche-editor":"./components/sche-editor/sche-editor",
     "sche-item":"./components/sche-item/sche-item",
-    "sche-day":"./components/sche-day/sche-day"
+    "sche-day":"./components/sche-day/sche-day",
+    "loading-bot": "../../components/common/loading-bot/loading-bot",
+    "refresher": "../../components/common/refresher/refresher"
   },
   "navigationBarBackgroundColor": "#8B686F",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "我的时间",
+  "navigationBarTitleText": "日历",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "dark",
   "enablePullDownRefresh": true

@@ -3,7 +3,6 @@
   width: 100%;
   height: 80rpx;
   display: flex;
-  background: #f6f6f6;
 }
 .pager .item{
   flex: 1 1 auto;

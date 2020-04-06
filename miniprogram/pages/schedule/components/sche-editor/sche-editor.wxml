@@ -1,61 +1,62 @@
-<view class="sche-editor">
-  <view class="header">
-    <view class="closeEditor" bindtap="closeEditor">关闭</view>
-    <view class="title">添加记录</view>
-  </view>
-
-  <view class="name">
-    <image src="../../../../assets/icon/schedule_name.png"></image>
-    <text>名称</text>
-    <input placeholder="名称" bindinput="changeName"></input>
-  </view>
-
-
-  <view class="time">
-
-    <view class="picker">
-      <view>
-        <text>开始时间</text>
-        <picker mode="date" class="date-picker" bindchange="changeDate" value="{{startDate}}" data-type="startDate">{{startDate}}</picker>
-        <picker mode="time" class="time-picker" wx:if="{{!isAllday}}" value="{{startTime}}" bindchange="changeTime" data-type="startTime">{{startTime}}</picker>
-        <text class="time-text" wx:else>全天</text>
-
-
-      </view>
-
-      <view>
-        <text>结束时间</text>
-        <picker mode="date" class="date-picker" bindchange="changeDate" data-type="endDate" value="{{endDate}}" start="{{startDate}}">{{endDate}}</picker>
-
-        <picker mode="time" class="time-picker" wx:if="{{!isAllday}}" value="{{endTime}}" bindchange="changeTime" data-type="endTime" start="{{startTime}}">{{endTime}}</picker>
-        <text class="time-text" wx:else>全天</text>
-      </view>
-    </view>
-    <switch checked="{{false}}" bindchange="isAllday"  >全天</switch>
-
-  </view>
-
-  <view class="place">
-    <image src="../../../../assets/icon/place.png"></image>
-    <text>地点</text>
-    <input placeholder="地点" bindinput="changePlace">{{place}}</input>
-  </view>
-
-  <view class="infor">
-    <view class="title">
-      <image src="../../../../assets/icon/comment.png"></image>
-      <text>备注</text>
+<view class="sche-editor-wraper {{showEditor === true ? 'wraper-show' : 'wraper-none'}}" >
+  <view class="sche-editor {{showEditor === true ? 'editor-show' : 'editor-none'}}">
+    <view class="header">
+      <view class="closeEditor" bindtap="closeEditor">关闭</view>
+      <view class="title">添加日历</view>
     </view>
 
-    <textarea placeholder="添加备注" show-confirm-bar="{{false}}" 
-    cursor-spacing="{{150}}" fixed  bindinput="changeInfor"  ></textarea>
+    <view class="name">
+      <image src="../../../../assets/icon/schedule_name.png"></image>
+      <text>日历</text>
+      <input placeholder="日历" bindinput="changeName"></input>
+    </view>
+
+
+    <view class="time">
+
+      <view class="picker">
+        <view>
+          <text>开始时间</text>
+          <picker mode="date" class="date-picker" bindchange="changeDate" value="{{startDate}}" data-type="startDate">{{startDate}}</picker>
+          <picker mode="time" class="time-picker" wx:if="{{!isAllday}}" value="{{startTime}}" bindchange="changeTime" data-type="startTime">{{startTime}}</picker>
+          <text class="time-text" wx:else>全天</text>
+
+
+        </view>
+
+        <view>
+          <text>结束时间</text>
+          <picker mode="date" class="date-picker" bindchange="changeDate" data-type="endDate" value="{{endDate}}" start="{{startDate}}">{{endDate}}</picker>
+
+          <picker mode="time" class="time-picker" wx:if="{{!isAllday}}" value="{{endTime}}" bindchange="changeTime" data-type="endTime" start="{{startTime}}">{{endTime}}</picker>
+          <text class="time-text" wx:else>全天</text>
+        </view>
+      </view>
+      <switch checked="{{false}}" bindchange="isAllday">全天</switch>
+
+    </view>
+
+    <view class="place">
+      <image src="../../../../assets/icon/place.png"></image>
+      <text>地点</text>
+      <input placeholder="地点" bindinput="changePlace">{{place}}</input>
+    </view>
+
+    <view class="infor">
+      <view class="title">
+        <image src="../../../../assets/icon/comment.png"></image>
+        <text>备注</text>
+      </view>
+
+      <textarea placeholder="添加备注" show-confirm-bar="{{false}}" cursor-spacing="{{150}}" fixed bindinput="changeInfor"></textarea>
+    </view>
+
+    <view class="footer">
+
+      <button class="complete" bindtap="completeEdit">完成</button>
+      <!-- <button class="delete" >删除</button> -->
+
+    </view>
+
   </view>
-
-  <view class="footer">
-
-    <button class="complete" bindtap="completeEdit">完成</button>
-    <!-- <button class="delete" >删除</button> -->
-
-  </view>
-
 </view>

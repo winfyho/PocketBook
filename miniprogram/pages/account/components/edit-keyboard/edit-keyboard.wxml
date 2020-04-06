@@ -1,10 +1,10 @@
 
-<view class="edit-keyboard-wraper" wx:if="{{addActive}}">
-  <view class="add-record" >
+<view class="editor {{showEditor === true ? 'editor-show' : 'editor-none'}}" >
+  <view class="editor-wraper {{showEditor === true ? 'editor-wraper-show' : 'editor-wraper-none'}}" >
 
     <!--------- 标题栏----------------- -->
     <view class="header">
-      <view class="close" bindtap="closeAddRecord">关闭</view>
+      <view class="close" bindtap="switchEditor">关闭</view>
       <text>记一笔</text>
     </view>
 
@@ -12,44 +12,39 @@
     <view class="input-block">
 
       <view class="date">
-        <picker mode="date" value="{{addDate}}" bindchange="bindDateChange">
-          <text class="month">{{month}}月</text>{{day}}号</picker>
+        <picker mode="date" value="{{add_date}}" bindchange="bindDateChange">
+          <text class="month">{{today.month}}月</text>{{today.day}}号</picker>
       </view>
 
       <view class="number">
-        <input value="{{addNumStr}}" maxlength="9"></input>
+        <input type="text" value="{{add_number}}" disabled ></input>
       </view>
 
-      <view  bindtap="addComment" class="comment {{addCommentActive === true ? 'addCommentActive' : ''}}">
-        <input placeholder="添加备注" bindinput="changeComment" value="{{comment}}"></input>
-        <button class="completeCom" size="mini" wx:if="{{addCommentActive}}" catchtap="completeComment">完成</button>
+      <view   class="comment {{addCommentActive === true ? 'addCommentActive' : ''}}">
+        <view class="btn-show-comment" wx:if="{{!showComment}}" bindtap="addComment">
+          {{add_comment || '添加备注'}}
+        </view>
+        <view class="comment-editor" wx:else>
+          <input placeholder="输入别名或者备注信息" maxlength="10" bindinput="updateComment" value="{{add_comment}}"></input>
+          <view class="btn-complete-comment" catchtap="completeComment">添加备注</view>
+        </view>
       </view>
 
-    </view>
+    </view>       
 
 
-    <!---------- 分类选择器 ------------->
+
     <view class="category">
-      <view class="income-cat">
-
-        <text wx:for="{{categorys.income}}" wx:key="{{index}}" 
-          class="{{(index === addCatIndex && type==='income')  ? 'active' : ''}}" 
-          data-name="{{item.name}}" data-index="{{index}}" data-type="{{'income'}}" data-imgUrl="{{item.imgurl}}"
-          bindtap="chooseCate">{{item.name}}</text>
-
-      </view>
-
-      <view class="outcome-cat">
-
-        <text wx:for="{{categorys.outcome}}" wx:key="{{index}}" 
-          class="{{(index === addCatIndex && type==='outcome')  ? 'active' : ''}}" 
-          data-name="{{item.name}}" data-index="{{index}}" data-type="{{'outcome'}}" data-imgurl="{{item.imgurl}}"
-          bindtap="chooseCate">{{item.name}}</text>
-
+      <view  wx:for="{{categorys}}" wx:key="{{index}}" 
+      class="category-item {{index === add_category_index ? 'category-item-active' : ''}}"
+      data-type="{{item.type}}" data-imgurl="{{item.imgurl}}" data-name="{{item.name}}" data-index="{{index}}"
+      bindtap="chooseCategory">
+        <image class="icon" src="../../icon/{{item.imgurl}}.png"></image>
+        <text>{{item.name}}</text>
       </view>
     </view>
 
-    <!-------------- 键盘 -------------- -->
+
     <view class="keyboard">
       <view class="keyboard-num">
         <button class="num" wx:for="{{9}}" wx:key="{{index}}" data-num="{{item+1}}" bindtap="inputNum" hover-class="num-click">{{item+1}}</button>
@@ -67,5 +62,7 @@
 
       </view>
     </view>
+
+
   </view>
 </view>

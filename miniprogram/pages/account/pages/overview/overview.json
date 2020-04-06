@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "category-table": "./pager/category-table/category-table",
+    "category-detail" : "./pager/category-detail/category-detail",
+    "day-table" : "./pager/day-table/day-table",
+    "pager": "/components/pager/pager"
+  },
+  "navigationBarBackgroundColor": "#86BAA3",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "总览",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": false
+}

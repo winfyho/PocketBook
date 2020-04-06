@@ -1,0 +1,11 @@
+/* components/common/loading-bot/loading-bot.wxss */
+.loading-bot{
+  width: 100%;
+  background: #F5F5F5;
+  text-align: center;
+}
+.loading-bot .loading{
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+}

@@ -1,6 +1,7 @@
+import dateTools from "./tools/date.js"
 App({
   globalData: {
-    openid: ""
+
   },
 
   onLaunch: function() {
@@ -8,29 +9,44 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        // 
-        env: 'testcloud-ltqmd',
+
+        env: 'winfyho-30xyn',
         traceUser: true,
+
       })
     }
+    try {
 
-    let op = "";
-     wx.cloud.callFunction({
-      name: 'login',
-      complete: res => {
-        console.log('callFunction test result: ', res.result.openid)
-        op = res.result.openid;
+      var _openid = wx.getStorageSync('_openid')
+      if (_openid) {
+        console.log("缓存中的_openid", _openid)
+        this.globalData.openid = _openid
+      } else {
 
-        this.globalData = {
-          openid: res.result.openid
-        }
+        wx.cloud.callFunction({
+          name: 'login',
+          success: res => {
 
+            console.log("登陆", res.result.openid, res.result)
+            
+            this.globalData = {
+              openid: res.result.openid,
+            }
+
+            try {
+              wx.setStorageSync('_openid', res.result.openid)
+            } catch (e) {
+              console.log("set设置缓存失败")
+            }
+
+
+          }
+        })
       }
-    })
+    } catch (e) {
+      console.log("get获取缓存失败")
+    }
+
 
   },
 

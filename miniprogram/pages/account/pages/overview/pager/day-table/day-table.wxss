@@ -1,0 +1,95 @@
+/* pages/account/components/overview/components/day-table/day-table.wxss */
+.body{
+  margin-bottom: 80rpx;
+}
+
+.body .picker-income,
+.body .picker-income .active{
+  color: #86BAA3;
+}
+.body .picker-outcome,
+.body .picker-outcome .active{
+  color: #CD7572;
+}
+.day-item{
+  display: flex;
+  padding: 0 40rpx;
+  padding-right: 100rpx;
+  width: 100%;
+  /* height: 140rpx; */
+  box-sizing: border-box;
+}
+.day-item>view{
+  height: 100%;
+}
+.day-item .day{
+  flex: 0 0 60rpx;
+  line-height: 70rpx;
+  /* font-size: 34rpx; */
+  color: #424242;
+  border-right: 1px solid #333;
+
+}
+.day-item .process{
+  flex: 1 1 auto;
+}
+.day-item .process>view{
+  height: 70rpx;
+  padding: 15rpx 0;
+  box-sizing: border-box;
+}
+.day-item .process>view .inner{
+  position: relative;
+  min-width: 2%;
+  width: 100%;
+  height: 40rpx;
+  background: #f70;
+  border-radius: 5rpx;
+}
+.day-item .process>view .inner .value{
+  position: absolute;
+  right: 0;
+  font-size: 26rpx;
+  color: #666;
+  transform: translateX(120%)
+}
+.day-item .process .outcome .inner{
+  background: #CD7572
+}
+.day-item .process .income .inner{
+  background: #86BAA3
+}
+
+.picker{
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+}
+.picker .date{
+  flex: 1 1 auto;
+  height: 100%;
+  line-height: 80rpx;
+}
+.picker .date picker{
+  display: flex;
+  height: 100%;
+  padding-left: 30rpx;
+  /* font-weight: 500; */
+  /* font-size: 34rpx; */
+
+}
+.picker .date>view{
+  padding-left: 20rpx;
+  height: 100%;
+  line-height: 80rpx;
+}
+
+
+.picker .outcome,
+.picker .income{
+  flex: 0 0 120rpx;
+  text-align: center;
+  height: 100%;
+  line-height: 80rpx;
+  color: #777;
+}

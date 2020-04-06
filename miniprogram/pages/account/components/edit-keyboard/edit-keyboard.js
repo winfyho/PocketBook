@@ -1,10 +1,14 @@
 // pages/account/components/edit-keyboard/edit-keyboard.js
-import dateTools from "../../../../tools/date.js"
-import accountService from "../../../../service/cloud/account.js"
-let loadCount = 0;
+import {
+  getDateObj,
+  toTimeStamp
+} from "../../../../utils/date.js"
+import categorys from "../../categorys.js"
+
 const app = getApp();
-const db = wx.cloud.database();
-const account = db.collection("todos");
+const dateObj = getDateObj();
+
+
 Component({
   /**
    * 组件的属性列表
@@ -13,150 +17,103 @@ Component({
     addActive: {
       type: Boolean,
       value: false
+    },
+    showEditor: {
+      type: Boolean
     }
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    categorys: {
-      income: [{
-          name: "收入",
-          imgurl: "income"
-        },
-        {
-          name: "工资",
-          imgurl: "salary"
-        },
-        {
-          name: "兼职",
-          imgurl: "parttime"
-        },
-        {
-          name: "奖金",
-          imgurl: "bonus"
-        },
-        {
-          name: "人情",
-          imgurl: "relation"
-        },
-        {
-          name: "理财",
-          imgurl: "financial"
-        },
-      ],
-      outcome: [{
-          name: "支出",
-          imgurl: "outcome"
-        }, {
-          name: "吃饭",
-          imgurl: "eat"
-        }, {
-          name: "零食",
-          imgurl: "snack"
-        }, {
-          name: "购物",
-          imgurl: "shop"
-        }, {
-          name: "娱乐",
-          imgurl: "ent"
-        }, {
-          name: "交通",
-          imgurl: "traffic"
-        },
-        {
-          name: "住房",
-          imgurl: "rent"
-        }, {
-          name: "居家",
-          imgurl: "house"
-        }, {
-          name: "宠物",
-          imgurl: "pet"
-        }, {
-          name: "医疗",
-          imgurl: "hospital"
-        }, {
-          name: "学习",
-          imgurl: "study"
-        }, {
-          name: "其他",
-          imgurl: "others"
-        },
-      ],
+    categorys: categorys.list,
 
+    detail: {
+      number: 0,
+      time: dateObj.timeString,
+      date: dateObj.dateString,
+      timeStamp: dateObj.timeStamp,
+      type: "outcome",
+      icon: "outcome",
+      category: "支出",
+      comment: ""
     },
-
-    addNum: 0,
-    addNumStr: "0",
-    addDate: "",
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + 1,
-    day: new Date().getDate(),
-    type: "outcome",
-    category: "支出",
-    comment: "",
-    icon: "outcome",
-    addCatIndex: 0,
     addActive: true,
-    addCommentActive: false,
+    showComment: false,
 
-    editData: {
+    today: dateObj,
 
-    }
+    add_number: '0',
+    add_date: dateObj.dateString,
+    add_category: "outcome",
+    add_category_name: "支出",
+    add_category_index: 6,
+    add_type: "outcome",
+    add_comment: "",
+
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+
+    // 关闭编辑器-------------------------
+    switchEditor(e) {
+      this.triggerEvent('editor-switch', false)
+      this.setData({
+        addNumStr: "0",
+        // showEditor: false
+      })
+    },
+
     // 日期选择器----------------------
     bindDateChange(e) {
-      var y = e.detail.value.slice(0, 4);
-      var m = e.detail.value.slice(5, 7);
-      var day = e.detail.value.slice(8, 10);
+      let month = parseInt(e.detail.value.slice(5, 7));
+      let day = parseInt(e.detail.value.slice(8, 10));
       this.setData({
-        addDate: e.detail.value,
-        month: parseInt(m),
-        day: parseInt(day)
+        add_date: e.detail.value,
+        today: {
+          month,
+          day
+        }
       })
-      console.log("date", this.data.addDate, this.data.month, this.data.day, );
+      console.log("date", this.data.add_date);
     },
 
 
     // 输入金额------------------------
     inputNum(e) {
 
-      if (this.data.addNumStr === "0" || this.data.addNumStr === "00") {
-        this.data.addNumStr = "";
+      if (this.data.add_number === "0" || this.data.add_number === "00") {
+        this.data.add_number = "";
       }
-      if (this.data.addNumStr.length > 8) {
-        return
+      if (this.data.add_number.length < 9) {
+        this.setData({
+          add_number: this.data.add_number + '' + e.currentTarget.dataset.num
+        })
       }
-      this.setData({
-        addNumStr: this.data.addNumStr + '' + e.currentTarget.dataset.num
-      })
+
 
     },
 
     // 备注信息------------------------------
-    changeComment(e) {
+    updateComment(e) {
       this.setData({
-        addComment: e.detail.value,
-        comment: e.detail.value
-
+        add_comment: e.detail.value,
       })
     },
     completeComment(e) {
       this.setData({
-        addCommentActive: false,
+        showComment: false
       })
-      console.log("comment", this.data.comment)
+      console.log("comment", this.data.add_comment)
     },
     addComment(e) {
       this.setData({
-        addCommentActive: true
+        showComment: true,
       })
     },
 
@@ -165,128 +122,87 @@ Component({
 
 
     // 类别选择器-----------------------
-    chooseCate(e) {
-      const index = e.currentTarget.dataset.index;
-      // console.log(e.currentTarget.dataset)
+    chooseCategory(e) {
+      console.log(e.currentTarget.dataset)
+      let category = e.currentTarget.dataset
       this.setData({
-
-        addCatIndex: index,
-        category: e.currentTarget.dataset.name,
-        type: e.currentTarget.dataset.type,
-        icon: e.currentTarget.dataset.imgurl
-
-
+        add_category: category.imgurl,
+        add_type: category.type,
+        add_category_index: category.index,
+        add_category_name: category.name,
       })
-      console.log("category", this.data.type, this.data.category, this.data.icon, this.data.addCatIndex)
-
     },
 
     // 键盘删除键--------------------------
     backspace(e) {
-      var backNum = this.data.addNumStr.slice(0, this.data.addNumStr.length - 1);
+      var backNum = this.data.add_number.slice(0, this.data.add_number.length - 1);
       if (backNum === "") {
         backNum = "0";
       }
       this.setData({
-        addNumStr: backNum
+        add_number: backNum
       })
     },
 
     // 键盘清空键--------------------------
     clearInput(e) {
       this.setData({
-        addNumStr: "0"
+        add_number: "0"
       })
     },
 
     // 完成编辑-----------------------------
     complete() {
 
-      const editData = {
-        date: this.data.addDate,
-        number: parseInt(this.data.addNumStr),
-        category: this.data.category,
-        type: this.data.type,
-        icon: this.data.icon,
-        comment: this.data.comment,
+      let number = parseInt(this.data.add_number);
+      let detail = {
+        date: this.data.add_date,
+        time: dateObj.timeString,
+        income: this.data.add_type === 'income' ? number : 0,
+        outcome: this.data.add_type === 'outcome' ? number : 0,
+        number: number,
+        category: this.data.add_category_name,
+        category_name: this.data.add_category_name,
+        type: this.data.add_type,
+        icon: this.data.add_category,
+        comment: this.data.add_comment,
+        timeStamp: toTimeStamp(this.data.add_date, dateObj.timeString),
+        editTime: {
+          time: toTimeStamp(this.data.add_date, dateObj.timeString)
+        }
       }
 
-      let dt = new Date();
-      let editTime = {
-        h: dt.getHours(),
-        m: dt.getMinutes(),
-        s: dt.getSeconds(),
-        time: dt.getTime(),
+      let records = {
+        _id: "",
+        _openid: "",
+        item: detail,
+        editTime: {
+          time: this.data.detail.timeStamp
+        }
       }
-      this.setData({
-        editData,
-        addActive: false,
-        addNumStr: "0",
-        comment:"",
-        addCommentActive: false
-
-
-      })
-
-      console.log(this.data.editData)
-      //向数据库添加数据
+      console.log("添加数据", records)
+      const account = wx.cloud.database().collection('account')
       account.add({
         data: {
-          openid: app.globalData.openid,
-          item: this.data.editData,
-          editTime
-        },
-        success: res => {
-          
-          
-          console.log("add success", editTime, app.globalData.openid, this.data.editData)
-          wx.showToast({
-            title: '已完成',
-            mask: true,
-            icon: "success",
-            duration: 900,
-          });
-          wx.startPullDownRefresh()
-
+          item: records.item,
+          editTime: records.editTime
         }
-
+      }).then(res => {
+        console.log(`添加成功`, res)
+        wx.showToast({
+          title: '已完成',
+          mask: false,
+          icon: "success",
+          duration: 900,
+        });
       })
-
-
+      //向数据库添加数据
 
 
     },
 
 
-
-    // 关闭编辑器-------------------------
-    closeAddRecord() {
-      this.setData({
-        addNumStr: "0",
-        addActive: false
-      })
-      // this.triggerEvent('close', {
-      //   addActive: false
-      // }, {})
-    },
   },
 
 
-
-
-
-  lifetimes: {
-    attached: function() {
-      let dateStr = dateTools.getNowDate().date;
-      // console.log("datestr", dateStr)
-
-
-      this.setData({
-        addDate: dateStr
-      })
-      console.log("nowdate", this.data.addDate)
-      loadCount++;
-
-    }
-  }
 })

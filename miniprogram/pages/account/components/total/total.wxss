@@ -30,7 +30,8 @@
 
 .total view.startDate{
   position: absolute;
-  right: 15rpx;
+  left: 20rpx;
   bottom: 15rpx;
   font-size: 24rpx;
+  color: #999;
 }

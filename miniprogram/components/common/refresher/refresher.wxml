@@ -1,0 +1,3 @@
+<view class="refresher {{isTriggered ? 'refresher-active' : ''}}" >
+  <image class="inner" src="./icon/refresh_schedule.png" mode="widthFix"></image>
+</view>

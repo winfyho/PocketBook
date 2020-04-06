@@ -3,13 +3,12 @@
     "edit-keyboard":"./components/edit-keyboard/edit-keyboard",
     "day-item":"./components/day-item/day-item",
     "detail-item":"./components/detail-item/detail-item",
-    "total":"./components/total/total",
-    "overview":"./components/overview/overview"
+    "total":"./components/total/total"
   },
   "navigationBarBackgroundColor": "#86BAA3",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "记账",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "dark",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false
 }

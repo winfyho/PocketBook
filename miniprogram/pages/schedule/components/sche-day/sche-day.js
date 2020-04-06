@@ -8,8 +8,16 @@ Component({
       type: Object,
       value: {}
     },
-    dateObj:{
-      type:Object,
+    month:{
+      type:Number,
+      value:0
+    },
+    day:{
+      type:Number,
+      value:0
+    },
+    records:{
+      type:Array,
       value:[]
     }
     

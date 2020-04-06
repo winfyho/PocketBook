@@ -1,15 +1,37 @@
 /* pages/schedule/components/sche-editor/sche-editor.wxss */
-
-.sche-editor {
+.sche-editor-wraper{
   position: fixed;
-  z-index: 10;
-  left: 0rpx;
-  bottom: 0rpx;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .5);
+}
+.wraper-none{
+  z-index: -1;
+  background: transparent;
+}
+.wraper-show{
+  z-index: 100;
+}
+.sche-editor {
+  transition: transform .4s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   background: #fff;
   box-sizing: border-box;
   padding: 0rpx 0rpx;
   /* border: 2px solid #cd7572; */
+}
+.editor-none{
+  transform: translateY(100%)
+}
+.editor-show{
+  transform: translateY(0)
 }
 .sche-editor .header{
   position: relative;

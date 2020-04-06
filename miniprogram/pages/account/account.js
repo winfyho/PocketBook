@@ -1,105 +1,31 @@
 import data from "./data.js"
-import dateTools from "../../tools/date.js"
-import userservice from "../../service/cloud/users.js"
+import {getDateObj} from "../../utils/date.js"
 import accountService from "../../service/cloud/account.js"
+import accountTools from "../../service/cloud/account_tools.js"
+import {_getAccounts,_getTotal} from "../../network/account.js"
 
 const app = getApp();
-const db = wx.cloud.database();
-const todos = db.collection("todos");
-const users = db.collection("users");
 let loadCount = 0;
+
 
 Page({
 
 
   data: {
+    curPage:0,
+    month : new Date().getMonth()+1,
     openid: "",
     income: 0,
     outcome: 0,
+    list:[],
 
     dayList: [],
     detailList: [],
 
-    categorys: {
-      income: [{
-          name: "收入",
-          imgurl: "income"
-        },
-        {
-          name: "工资",
-          imgurl: "salary"
-        },
-        {
-          name: "兼职",
-          imgurl: "parttime"
-        },
-        {
-          name: "奖金",
-          imgurl: "bonus"
-        },
-        {
-          name: "人情",
-          imgurl: "relation"
-        },
-        {
-          name: "理财",
-          imgurl: "financial"
-        },
-      ],
-      outcome: [{
-          name: "支出",
-          imgurl: "outcome"
-        }, {
-          name: "吃饭",
-          imgurl: "eat"
-        }, {
-          name: "零食",
-          imgurl: "snack"
-        }, {
-          name: "购物",
-          imgurl: "shop"
-        }, {
-          name: "娱乐",
-          imgurl: "ent"
-        }, {
-          name: "交通",
-          imgurl: "traffic"
-        },
-        {
-          name: "住房",
-          imgurl: "rent"
-        }, {
-          name: "居家",
-          imgurl: "house"
-        }, {
-          name: "宠物",
-          imgurl: "pet"
-        }, {
-          name: "医疗",
-          imgurl: "hospital"
-        }, {
-          name: "学习",
-          imgurl: "study"
-        }, {
-          name: "其他",
-          imgurl: "others"
-        },
-      ],
 
-    },
-
-
-
-
-    // 编辑完成后数据---------------- 
-    addData: {
-      date: "yyyy-mm-dd",
-      number: 0,
-      categorys: "",
-      type: "",
-      addicon:"",
-      comment:""
-    }
+    showEditor:false,
+    reachBot:false,
+    hasData:true
 
 
   },
@@ -108,17 +34,17 @@ Page({
 
 
   // 打开编辑器------------------------
-  openKeyBoard() {
+  openEditor() {
     this.setData({
-      addActive: true,
+      showEditor: true,
     })
   },
 
   // 关闭编辑器-------------------------
-  closeKeyBoard(e) {
-    console.log("closeKeyBoard",e.detail.addActive)
+  switchEditor(e) {
+    console.log("switch-editor",e.detail)
     this.setData({
-      addActive: e.detail.addActive,
+      showEditor: e.detail,
     })
 
   },
@@ -127,68 +53,105 @@ Page({
   
   routePush() {
     wx.navigateTo({
-      url: '/pages/acc_overview/test',
+      url: '/pages/account/pages/overview/overview',
     })
   },
   // 刷新页面------------------------
   onLoad: function(options) {
-    wx.startPullDownRefresh()
+    // wx.cloud.callFunction({
+    //   name: 'login',
+    //   complete: res => {
+    //     console.log('account login: ', res.result.openid)
+    //     app.globalData = {
+    //       openid: res.result.openid
+    //     }
+    //   }
+    // })
+    let dateObj = getDateObj(new Date().getTime())
+    let today = dateObj.dateString.slice(0,7)
+    console.log(app.globalData,today)
+
+    _getAccounts(this,app.globalData.openid,today,0).then(dayList => {
+      console.log(dayList)
+    })
+
+    _getTotal(app.globalData.openid,today).then(total => {
+      console.log("总计",total)
+      this.setData({
+        income:total.income,
+        outcome:total.outcome,
+      })
+    })
+
+
+    
+  },
+
+  reachBottom() {
+    if (!this.data.reachBot && this.data.hasData) {
+      console.log("下滑加载更多", this.data.skip)
+
+      this.setData({
+        reachBot: true
+      })
+      _getAccounts(this, app.globalData.openid, "2020-01-01", this.data.skip)
+        .then(res => {
+          this.setData({
+            reachBot: res.reachBot,
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          this.setData({
+            reachBot: false,
+            hasData: false
+          })
+        })
+    }
+
+  },
+
+
+
+
+ 
+  onReady: function() {
+
+
+  },
+
+  
+  onShow: function() {
+
+   
+
+  },
+
+ 
+  onPullDownRefresh: function() {
+
+    accountTools.getTotal(app.globalData.openid, this, startDate);
+    this.setData({
+      curPage: 0,
+      dayList:[],
+      detailList:[]
+    })
+    accountService(app.globalData.openid, this, startDate,this.data.curPage);
     
   },
 
 
 
 
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
+  onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
 
-
+  onUnload: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-    accountService(app.globalData.openid, this,1);
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage(options) {
 
     return {

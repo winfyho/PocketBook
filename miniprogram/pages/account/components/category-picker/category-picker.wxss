@@ -1,0 +1,19 @@
+/* pages/account/components/category-picker/category--picker.wxss */
+.category-picker{
+  display: flex;
+  height: 100rpx;
+}
+.category-picker>view{
+  flex: 1 1 auto;
+  text-align: center;
+  line-height: 100rpx;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* 改变字体颜色 */
+.category-picker .outcome{
+  color: #CD7572;
+}
+.category-picker .income{
+  color: #86BAA3;
+}

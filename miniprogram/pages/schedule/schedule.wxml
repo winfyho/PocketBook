@@ -1,4 +1,14 @@
-<view class="day">
+<scroll-view class="day client" scroll-y="true" 
+bindscrolltolower="reachBottom" lower-threshold="{{50}}" upper-threshold="{{0}}" bindtouchstart="startRefresh"
+bindtouchend="endRefresh"
+bindtouchmove="onRefresh"
+bindscroll="scroll"
+
+>
+  <!-- bindscrolltoupper="pullRefresh" -->
+
+  <refresher  isTriggered="{{isTriggered}}" />
+
   <!-- <view class="day-num">18号</view>
   <view class="item">
     <text class="time">21:21</text>
@@ -12,12 +22,13 @@
   <!-- <sche-item wx:for="{{scheduleList}}" wx:key="{{index}}" detail="{{item.detail}}" /> -->
 
 
-  <sche-day wx:for="{{dayList}}" wx:key="{{index}}" dayItem="{{item}}" dateObj="{{item.dateObj}}" />
+  <sche-day wx:for="{{dayList}}" wx:key="{{index}}" records="{{item.records}}" month="{{item.month}}" day="{{item.day}}" />
 
 
   <view class="add-btn">
     <button bindtap="showEditor">记</button>
   </view>
-</view>
+  <loading-bot hasData="{{hasData}}" show="{{reachBot}}" />
+</scroll-view>
 
-<sche-editor class="editor-com" wx:if="{{editActive}}" bind:emit="closeEditor" bind:edit="editComplete" />
+<sche-editor class="editor-com" showEditor="{{editActive}}" bind:emit="closeEditor" bind:edit="editComplete" />

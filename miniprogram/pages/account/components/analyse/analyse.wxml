@@ -1,0 +1,23 @@
+<view class="analyse-wraper" >
+    <view class="total">
+
+        <view class="title">{{title.total}}</view>
+
+        <view class="number" style="color:{{fontColor}};" >{{total}}</view>
+
+    </view>
+    <!-- <view class="max">
+
+        <view class="title">{{title.max}}</view>
+
+        <view class="number" style="color:{{fontColor}};" >{{max}}</view>
+
+    </view> -->
+    <view class="avg">
+
+        <view class="title">{{title.avg}}</view>
+
+        <view class="number" style="color:{{fontColor}};" >{{avg}}</view>
+
+    </view>
+</view>

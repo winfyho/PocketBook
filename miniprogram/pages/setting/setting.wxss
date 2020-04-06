@@ -1,1 +1,26 @@
 /* pages/setting/setting.wxss */
+page{
+  background: #f6f6f6;
+
+}
+.wraper{
+  width: 100%;
+}
+.advice{
+  box-sizing: border-box;
+  height: 100rpx;
+  line-height: 60rpx;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  font-size: 30rpx;
+  color: #424242;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.advice>view{
+  flex: 1 1 auto;
+}
+.advice .icon{
+  text-align: right;
+}

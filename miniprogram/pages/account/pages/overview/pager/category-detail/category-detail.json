@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+
+    "detail-item": "/pages/account/components/detail-item/detail-item",
+    "category-picker": "/pages/account/components/category-picker/category-picker"
+
+  }
+}

@@ -1,22 +1,36 @@
-export default function(openid, page,startDay) {
+export default function(openid, page, startDate,curPage) {
   const app = getApp();
 
   // const openid = "orjJX42LYGJoRnrfWXfptcyND6kM";
 
   const db = wx.cloud.database();
-  const todos = db.collection("todos");
-  todos.where({
-    _openid: openid
-  }).orderBy("item.date", "desc").orderBy("editTime.time", "desc").get({
+  const _ = db.command
+  const account = db.collection("account");
+  account.where({
+    _openid: openid,
+    item:{
+      date: _.gte(startDate)
+    }
+    
+
+  }).orderBy("item.date", "desc").orderBy("editTime.time", "desc").skip(curPage*20).get({
     success: res => {
+      if(res.data.length === 0){
+        console.log("已经没有数据了")
+        page.setData({
+          curPage:-1,
+        })
+      }else{
+        page.setData({
+          curPage: curPage + 1
+        })
+      }
 
+      let list = page.data.detailList.concat(res.data);
 
-
-      var list = res.data;
       var dayList = [];
       var day_index = 0;
 
-      console.log("accountService list", list);
       dayList[0] = {
         date: list[0].item.date,
         month: parseInt(list[0].item.date.slice(5, 7)),
@@ -50,9 +64,7 @@ export default function(openid, page,startDay) {
             outc = item.item.number || 0
           }
 
-          if (parseInt(item.item.date.slice(5, 7)) < parseInt(list[0].item.date.slice(5, 7))) {
-            break;
-          }
+          
 
           dayList.push({
             date: item.item.date,
@@ -62,40 +74,31 @@ export default function(openid, page,startDay) {
             outcome: outc,
             detailList: [item]
           })
-          
+
 
           day_index++;
 
         }
       }
 
-      var income = 0,
-        outcome = 0;
-      try {
-        dayList.forEach(i => {
-          if (i.month < parseInt(list[0].item.date.slice(5, 7))) {
-            console.log("1号")
-            throw new Error('exist')
-          }
-          income += i.income;
-          outcome += i.outcome;
-          
-        })
-      } catch (e) {
-        
-      }
+      
 
       page.setData({
-        detailList: res.data,
-        dayList,
-        income,
-        outcome
+        detailList: list,
+        dayList: dayList,
       })
-      wx.stopPullDownRefresh();
+      console.log("accountService list-curpage:" + (page.data.curPage-1), list);
 
       console.log("accountService dayList", page.data.dayList);
 
-    }
+    },
+    fail:err => {
+      console.error(err)
+    },
+    complete: res => {
+      wx.stopPullDownRefresh();
+    } 
+
   })
 
 }

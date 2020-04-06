@@ -1,0 +1,16 @@
+/* pages/account/components/overview/components/category-detail/category-detail.wxss */
+.body{
+  margin-bottom: 80rpx;
+}
+
+.bottom{
+  padding: 30rpx;
+  width: 100%;
+  text-align: center;
+}
+.bottom button{
+  display: inline-block;
+}
+.bottom text{
+  color: #777;
+}

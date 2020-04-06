@@ -7,8 +7,6 @@
   
   height: 580rpx;
   display: flex;
-  position: absolute;
-  bottom: 0rpx;
 }
 
 /* -----------数字键盘------------- */

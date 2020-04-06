@@ -1,0 +1,23 @@
+<view class="title">
+  <view class="header"  >标题</view>
+  <view class="text">
+    <input placeholder="概述问题,以便我们更快定位" value="{{title}}" bindinput="inputTitle" ></input>
+  </view>
+</view>
+
+<view class="contact">
+  <view class="header">联系方式</view>
+  <view class="text">
+    <input placeholder="邮箱或者手机号" value="{{contact}}" bindinput="inputContact"></input>
+  </view>
+</view>
+
+
+<view class="detail">
+  <view class="header">内容</view>
+  <view class="text">
+    <textarea placeholder="描述详细内容" value="{{detail}}" bindinput="inputDetail"></textarea>
+  </view>
+</view>
+
+<button class="send-btn" bindtap="sendMessage">发送消息</button>

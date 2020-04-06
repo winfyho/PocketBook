@@ -11,8 +11,8 @@
 
   <view class="name">
     <image src="/assets/icon/schedule_name.png"></image>
-    <text>日程</text>
-    <input placeholder="日程" bindinput="changeName" value="{{scheName}}" 
+    <text>日历</text>
+    <input placeholder="日历" bindinput="changeName" value="{{scheName}}" 
     disabled="{{!editActive}}" class="{{editActive === true? 'edit-active':'' }}"></input>
   </view>
 

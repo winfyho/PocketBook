@@ -21,7 +21,7 @@
 	},
 	"appid": "wx1868524e15256264",
 	"projectname": "WechatDaily",
-	"libVersion": "2.9.2",
+	"libVersion": "2.10.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -45,14 +45,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
 				{
 					"id": -1,
 					"name": "account",
@@ -76,15 +70,23 @@
 				},
 				{
 					"id": -1,
-					"name": "home",
-					"pathName": "pages/home/home",
+					"name": "overview",
+					"pathName": "pages/account/pages/overview/overview",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "overview",
-					"pathName": "pages/acc_overview/test",
+					"name": "我的",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "建议页面",
+					"pathName": "pages/setting/pages/advice/advice",
+					"query": "",
 					"scene": null
 				}
 			]

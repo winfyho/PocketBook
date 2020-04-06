@@ -1,8 +1,16 @@
-<view class="day" >
+<view class="day">
   <view class="day-list">
     <view class="date">{{day}}号</view>
-    <view class="income"><text class="span">日收入</text>{{income}}</view>
-    <view class="outcome"><text class="span">日支出</text>{{outcome}}</view>
+    <view class="number">
+      <view class="income subtotal">
+        <text class="span">日收: </text>
+        <text class="num">{{income}}</text>
+      </view>
+      <view class="outcome subtotal">
+        <text class="span">日支: </text>
+        <text class="num">{{outcome}}</text>
+      </view>
+    </view>
   </view>
-  <detail-item wx:for="{{detailList}}" wx:key="{{index}}" detailItem="{{item}}" bind:child="sendId" />
+  <detail-item wx:for="{{records}}" wx:key="{{index}}" detail="{{item}}" bind:child="sendId" />
 </view>

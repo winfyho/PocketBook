@@ -1,8 +1,11 @@
-<view class="body">
-  <!--------------- 信息总览------ -->
-  <total income="{{income}}" outcome="{{outcome}}" month="{{dayList[0].month}}" />
 
-  <day-item wx:for="{{dayList}}" wx:key="{{index}}" bind:emit="deleteItem" day="{{item.day}}" income="{{item.income}}" outcome="{{item.outcome}}" detailList="{{item.detailList}}" />
+<scroll-view class="body" scroll-y bindscrolltolower="reachBottom">
+  <!--------------- 信息总览------ -->
+  <total income="{{income}}" outcome="{{outcome}}" month="{{month}}" />
+
+  <day-item wx:for="{{dayList}}" wx:key="{{index}}" bind:emit="deleteItem" 
+  date="{{item.date}}"  
+  records="{{item.records}}" />
 
 
 
@@ -10,15 +13,12 @@
 
   <!--------------- 底部按钮------- -->
   <view class="footer">
-    <button hover-class="hover-active" bindtap="openKeyBoard" class="add-record">记一笔</button>
+    <button hover-class="hover-active" bindtap="openEditor" class="add-record">记一笔           </button>
     <button class="else" bindtap="routePush">总览</button>
   </view>
 
 
 
+</scroll-view>
 
-</view>
-
-<edit-keyboard wx:if="{{addActive}}" addActive="{{addActive}}" bind:close="closeKeyBoard" />
-
-
+<edit-keyboard showEditor="{{showEditor}}" bind:editor-switch="switchEditor" />

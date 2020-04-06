@@ -1,34 +1,29 @@
-<view class="detail-item-wraper" data-type="{{detailItem.type}}" >
-
+<view class="detail-item-wraper" data-type="{{detail.type}}">
   <view class="box {{active === true ? 'active':'' }}" bindtap="showRight">
+    <view class="detail-item ">
 
-    <view class="detail-item " >
       <view class="category">
-        <image src="../../icon/{{detailItem.item.icon}}.png" mode="widthFix"></image>
-        <text>{{ detailItem.item.category || '分类'}}</text>
-      </view>
-      <view class="date" wx:if="{{showDate}}">{{detailItem.item.date}}</view>
-
-      <view class="date" wx:else>{{detailItem.editTime.h+':'+(detailItem.editTime.m
-        < 10 ? '0'+detailItem.editTime.m : detailItem.editTime.m) }}</view>
-          <view class="number {{detailItem.item.type}}">{{detailItem.item.number || 0}}</view>
-
+        <image src="../../icon/{{detail.icon}}.png" mode="widthFix"></image>
+        <text>{{ detail.comment || detail.category }}</text>
       </view>
 
+      <!-- <view class="date show" wx:if="{{showDate}}">{{detail.date}}</view> -->
+      <view class="date">{{timeString}}</view>
 
-
-      <view class="bottom">
-        <view class="showDetail">{{detailItem.item.comment || ''}}</view>
-        <view class="delete"  data-id="{{detailItem._id}}" catchtap="deleteItem">删除</view>
-        <!--  -->
-      </view>
-
-
-
-
-
+      <view class="number {{detail.type}}">{{detail.number || 0}}</view>
 
     </view>
 
 
+
+
+
+    <view class="bottom">
+      <view class="showDetail">{{detail.comment || ''}}</view>
+      <view class="delete" data-id="{{detail._id}}" catchtap="deleteItem">删除</view>
+    </view>
+
+
+    
   </view>
+</view>

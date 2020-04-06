@@ -1,0 +1,7 @@
+<view class="bottom">
+
+  <button size="mini" wx:if="{{active === true}}" >{{clickMsg}}</button>
+
+  <text wx:else>{{disableMsg}}</text>
+
+</view>

@@ -1,0 +1,5 @@
+<view class="loading-bot">
+  <view class="loading show" wx:if="{{show}}">加载中...</view>
+  <view class="loading nodata" wx:if="{{!hasData}}">已经到底了</view>
+
+</view>

@@ -1,16 +1,18 @@
 {
   "pages": [
-    "pages/schedule/schedule",
     "pages/account/account",
-    "pages/home/home",
-    "pages/acc_overview/test",
-    "pages/schedule/pages/detail"
+    "pages/account/pages/overview/overview",
+    "pages/schedule/schedule",
+    "pages/setting/setting",
+    "pages/schedule/pages/detail",
+    "pages/setting/pages/advice/advice",
+    "pages/test/test"
   ],
   "sitemapLocation": "sitemap57.json",
   "window": {
     "navigationBarBackgroundColor": "#8B686F",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小程序1.0",
+    "navigationBarTitleText": "小程序",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "dark"
   },
@@ -27,6 +29,12 @@
         "text": "",
         "iconPath": "/assets/icon/account.png",
         "selectedIconPath": "/assets/icon/account_active.png"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "",
+        "iconPath": "/assets/icon/profile.png",
+        "selectedIconPath": "/assets/icon/profile_active.png"
       }
     ]
   }

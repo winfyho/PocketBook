@@ -1,4 +1,13 @@
-<!--pages/setting/setting.wxml-->
-<text>pages/setting/setting.wxml</text>
-<navigator open-type="navigateBack">返回</navigator>
-<button bindtap="routeBack">返回</button>
+<view class="wraper">
+
+  <view class="advice" bindtap="sendMessage">
+    <view >我有建议</view>
+    <view class="icon">></view>
+  </view>
+
+  <view class="advice" bindtap="sendMessage">
+    <view >我遇到了问题</view>
+    <view class="icon">></view>
+  </view>
+
+</view>

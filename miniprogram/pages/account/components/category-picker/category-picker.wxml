@@ -1,0 +1,32 @@
+
+<view class="category-picker" >
+
+  <!-- 年月选择器 -->
+  <view class="date-picker">
+      <picker class="{{type === '支出' ? 'outcome' : 'income' }}" mode="date" fields="month" value="{{date}}" bindchange="changeMonth" >{{year}}-{{month}}
+      </picker>
+    </view>
+
+  <!-- 改变支出/收入模式 -->
+  <view class="type-picker" bindtap="changeType">
+
+    <view class="{{type === '支出' ? 'outcome' : 'income' }}">{{type}}</view>
+    
+
+  </view>
+
+  <!-- 选择类别 -->
+  <view class="name-picker">
+    <picker bindchange="changeName" range="{{ type === '支出' ? categorys.outcome :  categorys.income }}" range-key="name">
+      <view class="{{type === '支出' ? 'outcome' : 'income' }}">
+        {{name}}
+      </view>
+    </picker>
+  </view>
+
+  <!-- 排序方式 -->
+  <view class="sort {{type === '支出' ? 'outcome' : 'income' }}" bindtap="changeSortMode">
+    <view wx:if="{{sortType === 'time'}}" >按时间</view>
+    <view wx:else >按金额</view>
+  </view>
+</view>

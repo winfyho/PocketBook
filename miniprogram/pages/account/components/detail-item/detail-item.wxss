@@ -59,7 +59,7 @@
   height: 100%;
   line-height: 100rpx;
   flex: 1 1 auto;
-  padding: 0 60rpx;
+  padding: 0 90rpx;
   overflow: hidden;
   font-size: 26rpx;
   color: #444;
@@ -88,9 +88,9 @@
 
 .detail-item .category {
   height: 100rpx;
-  line-height: 100rpx;
-  flex: 0 0 300rpx;
-  padding-left: 150rpx;
+  flex: 0 0 360rpx;
+  min-width: 360rpx;
+  padding-left: 90rpx;
   color: #000;
   display: flex;
   font-weight: 500;
@@ -101,24 +101,28 @@
   height: 40rpx;
   padding: 30rpx 0rpx;
   display: block;
-  line-height: 100rpx;
   margin-right: 20rpx;
   /* background: #f00; */
 }
 
 .detail-item .date {
-  flex: 0 0 250rpx;
-  /* border: 1px solid #000; */
+  flex: 1 1 auto;
+  text-align: left;
   height: 100rpx;
   line-height: 105rpx;
-  padding-left: 70rpx;
   font-size: 24rpx;
   color: #777;
 }
-
+.detail-item .show{
+  flex: 2 2 auto;
+}
 .detail-item .number {
   /* border: 1px solid #000; */
-  flex: 0 0 195rpx;
+  box-sizing: border-box;
+  flex: 0 0 220rpx;
+  min-width: 220rpx;
+  text-align: right;
+  padding-right: 90rpx;
   line-height: 105rpx;
 }
 

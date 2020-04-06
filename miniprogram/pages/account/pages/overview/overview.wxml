@@ -1,0 +1,23 @@
+<!-- <overview /> -->
+<pager class="pager" bind:pager="changePager" currentPager="{{curPager}}" pagers="{{pagers}}" />
+
+
+<view class="pager-view" hidden="{{curPager === 0 ? false : true}}">
+
+  <category-table bind:change="showCatList" />
+
+</view>
+
+<view class="pager-view" hidden="{{curPager === 1 ? false : true}}">
+
+  <category-detail class="catDetail" detailList="{{detailList}}"  />
+
+</view>
+
+
+<view class="pager-view" hidden="{{curPager === 2 ? false : true}}">
+
+  <day-table dayList="{{dayList}}"  />
+
+</view>
+

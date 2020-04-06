@@ -1,0 +1,60 @@
+/* pages/account/components/overview/category-table/category-table.wxss */
+.body{
+  margin-bottom: 80rpx;
+}
+.picker{
+  width: 100%;
+  display: flex;
+}
+
+.picker>view{
+  flex: 1 1 auto;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+.picker>view.curent{
+  /* color: #86BAA3; */
+  color: #f40;
+  font-size: 42rpx;
+  font-weight: 500;
+}
+
+.hiden .cat{
+  transition: all .5s;
+
+  transform: translateX(-500rpx);
+  opacity: 0;
+}
+
+
+.body .cat{
+  transition: all .5s;
+
+}
+.body .cat .process-wraper{
+  border-bottom: 15rpx solid #f5f5f5;
+}
+
+.body .cat progress{
+  margin-bottom: 10rpx;
+}
+.body .cat-header{
+  color: #777;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}
+
+
+
+.body .day-item{
+  height: 120rpx;
+  width: 100%;
+  border-bottom: 3px solid #000;
+}
+.body .day-item>view{
+  display: flex;
+}

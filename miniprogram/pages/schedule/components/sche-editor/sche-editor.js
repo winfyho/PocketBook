@@ -8,20 +8,23 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    showEditor:{
+      type:Boolean,
+      value:false
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    scheName: "名称",
+    scheName: "日历",
     startDate: "",
     endDate: "",
     startTime: "06:00",
     endTime: "06:00",
     isAllday: false,
-    place: "地点",
+    place: "定位",
     infor: "备注",
     dateBlock: "",
     editData: {}

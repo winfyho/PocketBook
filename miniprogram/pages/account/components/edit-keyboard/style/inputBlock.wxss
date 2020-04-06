@@ -1,20 +1,23 @@
 
-.add-record .input-block{
+.editor .input-block{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
   display: flex;
   border-bottom: 2px solid #eee;
+  height: 130rpx;
+  background: #fff;
 }
 
 /* ----------日期选择器--------------- */
-.add-record .date{
+.editor .date{
   flex: 0 0 160rpx;
-  background: #999;
   border-right: 1px solid #eee;
   padding-right: 20rpx;
   width: 100%;
   height: 130rpx;
-  background: #fff;
 }
-.add-record .date picker{
+.editor .date picker{
   width: 100%;
   height: 130rpx;
   line-height: 130rpx;
@@ -22,50 +25,79 @@
   text-align: center;
   font-size: 44rpx;
 }
-.add-record .date picker .month{
+.editor .date picker .month{
   font-size: 22rpx;
   color: #777;
   margin-right: 10rpx;
 }
 
 /* -----------数字输入框-------------- */
-.add-record .number{
+.editor .number{
   height: 130rpx;
-  width: 100%;
+  flex: 1 1 auto;
 }
-.add-record .number input{
+.editor .number input{
   height: 100%;
-  width: 100%;
   box-sizing: border-box;
   padding:  20rpx 30rpx;
-  background: #fff;
   color: #86BAA3;
   font-size: 48rpx;
 }
 
 
 /* ----------------添加备注-------------- */
-.add-record .comment{
-  display: flex;
-  flex: 0 0 200rpx;
+.editor .comment{
+  background: #fff;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+.editor .btn-show-comment{
+  padding: 0 20rpx;
   height: 130rpx;
+  max-width: 200rpx;
   line-height: 130rpx;
-  padding-left:20rpx;
   font-size: 24rpx;
   color: #666;
-  overflow: hidden;
+
+
 }
-.add-record .comment input{
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 20rpx;
-  text-align: center;
-  overflow: hidden;
+.editor .comment .comment-editor{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: #eee;
+  display: flex;
   
 }
-.add-record .comment .completeCom{
-  background: rgb(41, 219, 65);
+.editor .comment .comment-editor input{
+  flex: 1 1 auto;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  line-height: 130rpx;
+  width: 100%;
+  height: 100%;
+  margin-right: 160rpx;
+}
+.editor .comment .comment-editor .btn-complete-comment{
+  flex:0 0 160rpx ;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 12;
+  padding: 28rpx 0;
+  min-width: 180rpx;
+  text-align: center;
+  color: #fff;
+  background: #86BAA3;
+  border-radius: 20rpx;
+}
+
+.editor .comment .completeCom{
+  background: rgb(12, 199, 53);
   color: #fff;
   font-size: 28rpx;
   font-weight: 500;
@@ -76,7 +108,7 @@
   float: right;
   margin-right: 10rpx;
 }
-.add-record .addCommentActive{
+.editor .addCommentActive{
   position: absolute;
   z-index: 20;
   background: #f2f2f2;
