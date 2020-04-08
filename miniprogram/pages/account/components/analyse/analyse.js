@@ -16,10 +16,6 @@ Component({
       type:Number,
       value:1000
     },
-    max:{
-      type:Number,
-      value:100
-    },
     avg:{
       type:Number,
       value:10

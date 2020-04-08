@@ -31,13 +31,14 @@ Component({
   data: {
     iconUrl: "",
     timeString:"0:00",
+    day:0
   },
   attached: function () {
-    let dateObj = getDateObj(this.data.detail.editTime.time)
-    // console.table(time.timeString)
-
+    let timeString = getDateObj(this.data.detail.timeStamp).timeString
+    let day = getDateObj(this.data.detail.timeStamp).day
     this.setData({
-      timeString:dateObj.timeString
+      timeString,
+      day
     })
   },
 

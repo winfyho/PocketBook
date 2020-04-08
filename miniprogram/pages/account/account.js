@@ -1,4 +1,4 @@
-import data from "./data.js"
+
 import {getDateObj} from "../../utils/date.js"
 import accountService from "../../service/cloud/account.js"
 import accountTools from "../../service/cloud/account_tools.js"
@@ -53,7 +53,7 @@ Page({
   
   routePush() {
     wx.navigateTo({
-      url: '/pages/account/pages/overview/overview',
+      url: '/pages/account_overview/account_overview',
     })
   },
   // 刷新页面------------------------

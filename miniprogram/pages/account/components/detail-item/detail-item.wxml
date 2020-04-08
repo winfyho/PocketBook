@@ -8,7 +8,7 @@
       </view>
 
       <!-- <view class="date show" wx:if="{{showDate}}">{{detail.date}}</view> -->
-      <view class="date">{{timeString}}</view>
+      <view class="date">{{day}}号  {{timeString}}</view>
 
       <view class="number {{detail.type}}">{{detail.number || 0}}</view>
 

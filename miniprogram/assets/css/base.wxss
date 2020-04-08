@@ -1,14 +1,15 @@
 :root {
-  --color-green: #38D1B3;
+  --color-green: #38d1b3;
   --color-red: #cd7572;
-
+  --color-theme1: #cd7572;
+  --color-theme: #cea972;
   --color-theme1: #cd7572;
   --color-theme2: #cd7572;
   --color-theme3: #cd7572;
   --color-theme4: #cd7572;
-
 }
-page{
+
+page {
   width: 100%;
   height: 100%;
   margin: 0;

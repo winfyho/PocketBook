@@ -1,0 +1,55 @@
+<view class="body {{show === true ? '':'disNone'}}">
+  <!-- <view class="cat-header">统计自{{month}}月1号</view> -->
+  <view class="picker month">
+    <view class="last" bindtap="changeMonth" data-month="{{month-1}}" wx:if="{{month-1>=1}}">
+      {{month-1}}月
+    </view>
+    <!-- <view class="last" bindtap="changeMonth" data-month="{{month-1}}" wx:elif="{{month-1===0}}">{{2019}}年</view> -->
+    <view class="curent" data-month="{{month}}">{{month}}月</view>
+    <view class="next" bindtap="changeMonth" data-month="{{month+1}}" wx:if="{{month+1<=12}}">
+      {{month+1}}月
+    </view>
+    <!-- <view class="next" bindtap="changeMonth" data-month="{{month+1}}" wx:elif="{{month===12}}" >{{2021}}年</view> -->
+  </view>
+
+
+  <view class="cat total ">
+    
+    <view class="process-wraper">
+      <view>
+        <analyse title="{{ {total:'支出总和',  avg:'日均支出'} }}" 
+        total="{{outTotal}}" 
+        avg="{{outAvg}}" 
+        fontColor="#CD7572" />
+      </view>
+
+      <process wx:for="{{outList}}" wx:key="{{index}}" 
+      title="{{item.category}}" 
+      value="{{item.percent + '%'}}" 
+      textPosition="none" 
+      number="{{item.num}}" 
+      backColor="#CD7572" />
+    </view>
+
+
+    <view class="process-wraper">
+
+      <view>
+        <analyse title="{{ {total:'收入总和', avg:'日均收入'} }}" 
+        total="{{incTotal}}" 
+        avg="{{inAvg}}" />
+      </view>
+
+      <process wx:for="{{incList}}" wx:key="{{index}}" bindtap="routeToList" 
+      title="{{item.category}}" 
+      value="{{item.percent + '%'}}" 
+      textPosition="none" 
+      number="{{item.num}}" 
+      backColor="#86BAA3" />
+
+
+    </view>
+  </view>
+
+
+</view>

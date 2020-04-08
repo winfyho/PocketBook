@@ -1,51 +1,31 @@
-// miniprogram/pages/account/pages/overview/overview.js
-import accountService from "../../../../service/cloud/account.js"
-const app = getApp();
-
+// miniprogram/pages/overview/account_overview.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pagers: [
-      {name: "分析"},{name: "全部"},{name: "按天"},
-    ],
-    curPager: 0,
-    detailList:[],
-    dayList:[],
-    catName:"全部"
+    tabbar:"category"
   },
-  showCatList(res){
+  changeTabbar(e){
+    let tabbar = e.currentTarget.dataset.tabbar
+    console.log(e.currentTarget.dataset.tabbar)
     this.setData({
-      curPager: res.detail.index,
-      catName: res.detail.name 
-
+      tabbar
     })
-    var catDetail = this.selectComponent('.catDetail')
-    console.log(res)
     
-    catDetail.setData({
-      typeName: res.detail.name,
-      month: res.detail.month,
-      year: res.detail.year
-    })
-    console.log("view-changePager", this.data.curPager, this.data.catName);
   },
-  changePager(res) {
-    this.setData({
-      curPager: res.detail.index,
 
-    })
-    console.log("view-changePager", this.data.curPager, this.data.catName);
 
-  },
+
+
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**

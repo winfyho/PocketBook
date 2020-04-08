@@ -18,7 +18,7 @@
   flex: 1 1 auto;
   box-sizing: border-box;
   height: 70rpx;
-  padding: 15rpx 90rpx 15rpx 0rpx; 
+  padding: 15rpx 140rpx 15rpx 0rpx; 
 }
 .body .outline .inline{
   position: relative;
@@ -41,8 +41,8 @@
   display: block;
   position: absolute;
   right: 0rpx;
-  transform: translateX(120%);
+  transform: translateX(105%);
   color: #555;
   height: 100%;
-  line-height: 70rpx;
+  line-height: 40rpx;
 }

@@ -1,0 +1,34 @@
+/* miniprogram/pages/overview/account_overview.wxss */
+page{
+    width: 100%;
+    height: 100%
+}
+.client{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.tab-bar{
+    display: flex;
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, .3);
+    box-sizing: border-box;
+
+}
+
+.tab-bar .tab-bar-item{
+    flex: 1 1 auto;
+    text-align: center;
+}
+.tab-bar .active{
+    color: #f40;
+}
+.swiper{
+    position: absolute;
+    top: 90rpx;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

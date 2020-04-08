@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "load-more": "/components/load-more/load-more",
+    "process": "/components/process/process",
+    "analyse": "/pages//account/components/analyse/analyse"
+  }
+}

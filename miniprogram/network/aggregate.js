@@ -24,7 +24,9 @@ export function getMonthCatTotal(_this, _openid, year_month) {
           incList: [],
           outList: [],
           incTotal: 0,
-          outTotal: 0
+          outTotal: 0,
+          inAvg: 0,
+          outAvg: 0
         }
         res.list.forEach(i => {
           if (i.type === 'income') {
@@ -35,8 +37,23 @@ export function getMonthCatTotal(_this, _openid, year_month) {
             result.outList.push(i)
           }
         })
-        console.log(result)
-
+        result.inAvg = result.incTotal / 30
+        result.outAvg = result.outTotal / 30
+        result.incList.forEach(i => {
+          i.percent = i.num / result.incTotal * 100.0
+        })
+        result.outList.forEach(i => {
+          i.percent = i.num / result.outTotal * 100.0
+        })
+        console.log(res.list)
+        _this.setData({
+          incList: result.incList,
+          outList: result.outList,
+          incTotal: result.incTotal,
+          outTotal: result.outTotal,
+          inAvg: parseInt(result.inAvg),
+          outAvg: parseInt(result.outAvg)
+        })
         resolve(result)
       })
       .catch(err => {
@@ -46,7 +63,7 @@ export function getMonthCatTotal(_this, _openid, year_month) {
 
 }
 
-export function getMonthList(_this, _openid, year_month, sortObj) {
+export function getMonthList(_this, _openid, year_month, sortObj, skip = 0) {
   return new Promise((resolve, reject) => {
     year_month = year_month || `2020-01`
     sortObj = sortObj || {
@@ -82,9 +99,14 @@ export function getMonthList(_this, _openid, year_month, sortObj) {
       .skip(skip * 20)
       .end()
       .then(res => {
-
-        console.table(res.list)
-        resolve(res.list)
+        let detailList = _this.data.detailList.concat(res.list)
+        console.table(detailList)
+        _this.setData({
+          detailList,
+          skip: skip + 1,
+          hasData: res.list.length > 0 ? true : false
+        })
+        resolve(detailList)
 
       })
       .catch(err => {
@@ -120,13 +142,39 @@ export function getMonthDayTotal(_this, _openid, year_month, showMonth = false) 
       .skip(skip)
       .end()
       .then(res => {
-        if (!showMonth) {
-          console.table(res.list.slice(0, 7))
-          _this.setData({
-            weekList: res.list.slice(0, 7),
-            monthList: res.list.slice(0, 7),
-          })
+        let data = {
+          incList: [],
+          outList: [],
+          maxincome: 0,
+          maxoutcome: 0,
         }
+        if (!showMonth) {
+          console.table(res.list)
+
+          res.list.forEach(i => {
+            i.day = parseInt(i.date.slice(8, 10))
+            if (i.type === 'income') {
+              data.incList.push(i)
+              data.maxincome = i.num > data.maxincome ? i.num : data.maxincome
+            } else if (i.type === 'outcome') {
+              data.outList.push(i)
+              data.maxoutcome = i.num > data.maxoutcome ? i.num : data.maxoutcome
+            }
+          })
+
+        }
+        console.log(data)
+
+        _this.setData({
+          result: data,
+          incList: data.incList,
+          outList: data.outList,
+          maxincome: data.maxincome,
+          maxoutcome: data.maxoutcome,
+        })
+        resolve(data)
+
+
 
         if (showMonth) {
           if (_this.data.weekList.length === 0) {
@@ -138,7 +186,6 @@ export function getMonthDayTotal(_this, _openid, year_month, showMonth = false) 
           console.table(monthList)
 
           _this.setData({
-            monthList,
           })
 
         }
@@ -146,7 +193,6 @@ export function getMonthDayTotal(_this, _openid, year_month, showMonth = false) 
 
         // })
 
-        resolve(res.list)
       })
       .catch(err => {
         console.log(err)

@@ -70,13 +70,6 @@
 				},
 				{
 					"id": -1,
-					"name": "overview",
-					"pathName": "pages/account/pages/overview/overview",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "我的",
 					"pathName": "pages/setting/setting",
 					"query": "",
@@ -87,6 +80,19 @@
 					"name": "建议页面",
 					"pathName": "pages/setting/pages/advice/advice",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "account_overview",
+					"pathName": "pages/account_overview/account_overview",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/home",
 					"scene": null
 				}
 			]

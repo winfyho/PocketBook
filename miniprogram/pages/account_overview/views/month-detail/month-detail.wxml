@@ -1,0 +1,17 @@
+<!--pages/account/components/overview/components/category-detail/category-detail.wxml-->
+<scroll-view class="body" scroll-y bindscrolltolower="reachBottom">
+
+  <category-picker 
+  bind:change="getNewData"
+
+    
+    year="{{year}}" 
+    month="{{month}}" 
+    name="{{typeName}}" 
+    type="{{type}}" />
+
+  <detail-item wx:for="{{detailList}}" wx:key="{{index}}" 
+  detail="{{item}}" showDate="{{true}}" />
+
+  
+</scroll-view>

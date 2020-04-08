@@ -5,7 +5,7 @@
   <view class="outline">
     <view class="inline" style="width:{{value}}; background:{{backColor}}">
       <text class="inline-text" wx:if="{{textPosition === 'inline'}}">{{value}}</text>
-      <text class="outline-text">{{number}}</text>
+      <view class="outline-text">{{number}}</view>
 
     </view>
   </view>

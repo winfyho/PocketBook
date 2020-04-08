@@ -6,13 +6,7 @@
         <view class="number" style="color:{{fontColor}};" >{{total}}</view>
 
     </view>
-    <!-- <view class="max">
 
-        <view class="title">{{title.max}}</view>
-
-        <view class="number" style="color:{{fontColor}};" >{{max}}</view>
-
-    </view> -->
     <view class="avg">
 
         <view class="title">{{title.avg}}</view>

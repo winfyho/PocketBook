@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/account/account",
-    "pages/account/pages/overview/overview",
+    "pages/account_overview/account_overview",
     "pages/schedule/schedule",
     "pages/setting/setting",
     "pages/schedule/pages/detail",
     "pages/setting/pages/advice/advice",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/home/home"
   ],
   "sitemapLocation": "sitemap57.json",
   "window": {

@@ -1,13 +1,12 @@
 <!--pages/account/components/overview/components/day-table/day-table.wxml-->
 <view class="body">
 
-  <wxs src="./date.wxs" module="dateTools" />
 
 
   <view class="picker {{showType === 'outcome' ? 'picker-outcome' : 'picker-income'}}" >
       
     <view class="date">
-      <picker mode="date" fields="month" value="{{month}}" bindchange="changeMonth" >{{month}}
+      <picker mode="date" fields="month" value="{{year_month}}" bindchange="changeMonth" >{{year_month}}
       </picker>
     </view>
 
@@ -21,18 +20,19 @@
 
     <view class="day-item">
 
-      <view class="day">{{dateTools.dateToObj(item.date).day}}</view>
+      <view class="day">{{item.day}}</view>
 
       <view class="process">
 
         <view class="outcome" hidden="{{showType === 'outcome' ?  false: true}}" >
-          <view class="inner" style="width:{{item.outcome / maxoutcome *100 + '%'}}; min-width:{{item.outcome > 0 ? '2%' : '0%'}}">
-            <view class="value">{{item.outcome}}</view>
+          <view class="inner" style="width:{{item.num / maxoutcome *100 + '%'}}; min-width:{{item.outcome > 0 ? '2%' : '0%'}}">
+            <view class="value">{{item.num}}</view>
           </view>
         </view>
+
         <view class="income" hidden="{{showType === 'income' ?  false: true}}" >
-          <view class="inner" style="width:{{item.income / maxincome *100 + '%'}}; min-width:{{item.income > 0 ? '2%' : '0%'}}  "  >
-            <view class="value">{{item.income}}</view>
+          <view class="inner" style="width:{{item.num / maxincome *100 + '%'}}; min-width:{{item.income > 0 ? '2%' : '0%'}}  "  >
+            <view class="value">{{item.num}}</view>
           </view>
         </view>
 
@@ -42,6 +42,9 @@
 
   </block>
 
-  <load-more bindtap="changeSkip" active="{{curPage !== -1 ? true : false }}" clickMsg="{{'显示一个月内数据'}}" disableMsg="{{''}}" />
+  <!-- <load-more bindtap="changeSkip" 
+  active="{{curPage !== -1 ? true : false }}" 
+  clickMsg="{{'显示一个月内数据'}}" 
+  disableMsg="{{''}}" /> -->
 
 </view>

@@ -1,9 +1,8 @@
 {
   "usingComponents": {
-    "category-table": "./pager/category-table/category-table",
-    "category-detail" : "./pager/category-detail/category-detail",
-    "day-table" : "./pager/day-table/day-table",
-    "pager": "/components/pager/pager"
+    "category-total":"./views/category-total/category-total",
+    "day-total":"./views/day-total/day-total",
+    "month-detail":"./views/month-detail/month-detail"
   },
   "navigationBarBackgroundColor": "#86BAA3",
   "navigationBarTextStyle": "white",
