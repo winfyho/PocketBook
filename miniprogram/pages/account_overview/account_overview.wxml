@@ -8,9 +8,9 @@
 
     <view class="swiper">
         
-        <!-- <category-total wx:if="{{tabbar === 'category'}}" />
-        <day-total wx:if="{{tabbar === 'month'}}" /> -->
-        <month-detail />
+        <category-total wx:if="{{tabbar === 'category'}}" />
+        <day-total wx:if="{{tabbar === 'month'}}" />
+        <month-detail wx:if="{{tabbar === 'detail'}}" />
         
 
 
