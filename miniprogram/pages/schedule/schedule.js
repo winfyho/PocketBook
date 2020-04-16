@@ -17,9 +17,7 @@ Page({
    */
   data: {
     editActive: false,
-    scheduleList: [],
     list: [],
-    schedules: [],
     dayList: [],
     reload: false,
     reachBot: false,
@@ -28,7 +26,8 @@ Page({
     hasData: true,
     isTriggered: false,
     fresherpulling: false,
-    touchStart: 0
+    touchStart: 0,
+    triggered: false
   },
 
   getMess(e) {
@@ -45,9 +44,9 @@ Page({
   },
   editComplete(res) {
     this.setData({
-      editActive: false
+      editActive: false,
+      triggered: true,
     })
-    wx.startPullDownRefresh();
   },
   closeEditor(res) {
     this.setData({
@@ -67,68 +66,57 @@ Page({
    */
   onLoad: function(options) {
     let today = getDateObj().dateString
-    getSchedules(this, app.globalData.openid, "2020-01-01", 0).then(dayList => {
+    getSchedules(this, app.globalData.openid, today, 0).then(dayList => {
       console.log(this.data.list)
-
     })
-
   },
 
   onReady: function() {},
-  onShow: function() {},
+  onShow: function() {
+    if (this.data.reload) {
+      this.setData({
+        triggered: true,
+        reload: false,
+        list: [],
+      })
+    }
+  },
   onHide: function() {},
   onUnload: function() {},
-  scroll(e) {
-    if (e.detail.scrollTop < 50) {
-      this.setData({
-        reachTop: true,
-      })
-      // console.log("reach-top",e, e.detail.scrollTop)
-    }
-  },
-  startRefresh(e) {
+
+
+  pullRefresh(e) {
     this.setData({
-      fresherpulling: true,
-      touchStart: e.touches[0].clientY
+      triggered: true,
+      list: [],
+      dayList:[],
     })
-  },
-  onRefresh(e) {
-    if (!this.data.isTriggered) {
-      // console.log("下拉刷新中", e.touches[0].clientY)
-      this.setData({
-        isTriggered: true
-      })
-    }
-  },
-  endRefresh(e) {
-    if (e.changedTouches[0].clientY - this.data.touchStart > 180 && this.data.reachTop) {
-      console.log("触发下拉刷新", e.changedTouches[0].clientY)
-      wx.showToast({
-        title: '加载中',
-        icon:"loading"
-      })
-      setTimeout(() => {
-        this.setData({
-          isTriggered: false
-        })
-      }, 1000)
-    } else {
-      let delta = e.changedTouches[0].clientY - this.data.touchStart
-      // console.log("下拉刷新被复位", delta)
-      if (delta >= 0) {
-        this.setData({
-          isTriggered: false,
-        })
-      }
+    let today = getDateObj().dateString
+    console.log(today)
+    getSchedules(this, app.globalData.openid, today, 0)
+      .then(dayList => {
+        console.log(this.data.list)
+        setTimeout(() => {
+          this.setData({
+            triggered: false
+          })
+        }, 500)
 
-      if (delta < 0) {
-        this.setData({
-          reachTop: false
-        })
-      }
-    }
+      })
+      .catch(err => {
+        setTimeout(() => {
+          this.setData({
+            triggered: false
+          })
+          wx.showToast({
+            title: '无数据',
+            icon: "fail"
+          })
+        }, 500)
 
+      })
   },
+
 
   reachBottom() {
     if (!this.data.reachBot && this.data.hasData) {
@@ -137,7 +125,7 @@ Page({
       this.setData({
         reachBot: true
       })
-      getSchedules(this, app.globalData.openid, "2020-01-01", this.data.skip)
+      getSchedules(this, app.globalData.openid, getDateObj().dateString, this.data.skip)
         .then(res => {
           console.log(res)
           this.setData({

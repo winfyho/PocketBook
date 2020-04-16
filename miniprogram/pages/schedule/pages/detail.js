@@ -111,7 +111,6 @@ Page({
                   
                   wx.showToast({
                     title: '删除成功',
-                    icon: 'none',
                     duration: 1500
                   })
                 }

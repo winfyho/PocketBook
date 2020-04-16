@@ -9,7 +9,7 @@
   background: rgba(0, 0, 0, .5);
 }
 .wraper-none{
-  z-index: -1;
+  z-index: -3;
   background: transparent;
 }
 .wraper-show{
@@ -25,13 +25,14 @@
   background: #fff;
   box-sizing: border-box;
   padding: 0rpx 0rpx;
-  /* border: 2px solid #cd7572; */
 }
 .editor-none{
-  transform: translateY(100%)
+  opacity: 0;
+  transform: translateY(120%);
+  z-index: 0;
 }
 .editor-show{
-  transform: translateY(0)
+  transform: translateY(0);
 }
 .sche-editor .header{
   position: relative;

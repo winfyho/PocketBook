@@ -60,7 +60,7 @@ export function getSchedules(_this, _openid, startDate, skip = 0, ) {
         })
         let dayList = toDayList(schedules)
 
-
+        
         if (res.data.length > 0) {
           _this.setData({
             list: allList,
@@ -79,6 +79,7 @@ export function getSchedules(_this, _openid, startDate, skip = 0, ) {
 
           })
         }
+        reject()
 
 
 

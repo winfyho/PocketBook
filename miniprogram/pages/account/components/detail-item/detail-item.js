@@ -68,7 +68,8 @@ Component({
           this.setData({
             active: false
           })
-          wx.startPullDownRefresh()
+          
+          // wx.startPullDownRefresh()
         }
       })
     },

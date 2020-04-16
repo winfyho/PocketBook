@@ -1,20 +1,20 @@
 <view class="client">
 
-    <view class="tab-bar">
-        <view class="tab-bar-item {{tabbar === 'category' ? 'active' : ''}}" data-tabbar="category" bindtap="changeTabbar">分析</view>
-        <view class="tab-bar-item {{tabbar === 'month' ? 'active' : ''}}" data-tabbar="month" bindtap="changeTabbar">月计</view>
-        <view class="tab-bar-item {{tabbar === 'detail' ? 'active' : ''}}" data-tabbar="detail" bindtap="changeTabbar">全部</view>
-    </view>
+  <view class="tab-bar">
+    <view class="tab-bar-item {{tabbar === 'category' ? 'active' : ''}}" data-tabbar="category" bindtap="changeTabbar">分析</view>
+    <view class="tab-bar-item {{tabbar === 'month' ? 'active' : ''}}" data-tabbar="month" bindtap="changeTabbar">月计</view>
+    <view class="tab-bar-item {{tabbar === 'detail' ? 'active' : ''}}" data-tabbar="detail" bindtap="changeTabbar">全部</view>
+  </view>
 
-    <view class="swiper">
-        
-        <category-total wx:if="{{tabbar === 'category'}}" />
-        <day-total wx:if="{{tabbar === 'month'}}" />
-        <month-detail wx:if="{{tabbar === 'detail'}}" />
-        
+  <view class="swiper">
+
+    <category-total wx:if="{{tabbar === 'category'}}" />
+    <day-total wx:if="{{tabbar === 'month'}}" />
+    <month-detail wx:if="{{tabbar === 'detail'}}" />
 
 
-    </view>
+
+  </view>
 
 
 

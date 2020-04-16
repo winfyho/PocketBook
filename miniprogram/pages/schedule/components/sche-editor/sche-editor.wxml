@@ -1,7 +1,9 @@
-<view class="sche-editor-wraper {{showEditor === true ? 'wraper-show' : 'wraper-none'}}" >
+<view class="sche-editor-wraper {{showEditor === true ? 'wraper-show' : 'wraper-none'}}" 
+
+>
   <view class="sche-editor {{showEditor === true ? 'editor-show' : 'editor-none'}}">
-    <view class="header">
-      <view class="closeEditor" bindtap="closeEditor">关闭</view>
+    <view class="header" catchtap="closeEditor">
+      <view class="closeEditor" >关闭</view>
       <view class="title">添加日历</view>
     </view>
 
